@@ -1,0 +1,150 @@
+/* src/app/oplata/page.module.css */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.title {
+    font-size: 2.25rem;
+    color: var(--text-color);
+    margin: 2rem 0;
+    text-align: center;
+    font-weight: 600;
+}
+
+.page {
+    padding: 3rem 0;
+    background-color: var(--bg-color);
+    min-height: 100vh;
+}
+
+/* FAQ Styles */
+.faqSection {
+    padding: 2rem 0;
+}
+
+.faqTopic {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    transition: transform 0.2s ease;
+}
+
+.faqTopic:hover {
+    transform: translateY(-2px);
+}
+.topicContent {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.topicContent.active {
+    max-height: 1000px;
+}
+
+.faqItem {
+    border-top: 1px solid var(--border-color);
+}
+
+.faqQuestion {
+    padding: 1.25rem;
+    font-weight: 500;
+    color: var(--text-color);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.faqQuestion:hover {
+    background-color: var(--catalog-bg);
+}
+
+.faqContent {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 1.25rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    transition: all 0.3s ease;
+    background-color: var(--catalog-bg);
+}
+
+.faqContent.active {
+    max-height: 500px;
+    padding: 1.25rem 1.25rem;
+}
+
+.arrow {
+    width: 12px;
+    height: 12px;
+    border: solid var(--text-color);
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(45deg);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    margin-left: 1rem;
+}
+
+.arrow.up {
+    transform: rotate(-135deg);
+}
+
+.priceNote {
+    margin-top: 3rem;
+    padding: 1rem;
+    background-color: var(--catalog-bg);
+    border-radius: 8px;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.qrCodeContainer {
+    margin-top: 1.5rem;
+    text-align: center;
+    padding: 1rem;
+    background-color: white;
+    border-radius: 8px;
+    display: inline-block;
+}
+
+.qrCodeImage {
+    display: block;
+    margin: 0 auto;
+    border: 1px solid var(--border-color);
+}
+
+.qrCodeNote {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1rem;
+    }
+    
+    .title {
+        font-size: 1.75rem;
+    }
+    
+    .faqQuestion {
+        padding: 1rem;
+    }
+    
+    .faqContent {
+        padding: 0 1rem;
+    }
+    
+    .faqContent.active {
+        padding: 0 1rem 1rem;
+    }
+}

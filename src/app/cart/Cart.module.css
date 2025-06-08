@@ -1,0 +1,108 @@
+/* Стили для корзины */
+.cartPage {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.emptyCart {
+  text-align: center;
+  padding: 2rem;
+}
+
+.continueShopping {
+  display: inline-block;
+  margin-top: 1rem;
+  color: var(--link-color);
+}
+
+.cartItems {
+  margin-bottom: 2rem;
+}
+
+.cartItem {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border-color);
+  align-items: center;
+}
+
+.itemImage {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.itemDetails {
+  flex: 1;
+}
+
+.itemControls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.quantityInput {
+  width: 60px;
+  padding: 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+.removeBtn {
+  background: none;
+  border: none;
+  color: var(--accent-color);
+  cursor: pointer;
+}
+
+.cartSummary {
+  background: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-top: 2rem;
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.summaryRow.total {
+  font-weight: bold;
+  font-size: 1.2rem;
+  border-top: 1px solid var(--border-color);
+  padding-top: 1rem;
+}
+
+.cartActions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.clearCart {
+  background: none;
+  border: 1px solid var(--accent-color);
+  color: var(--accent-color);
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.checkoutBtn {
+  background: var(--accent-color);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.checkoutBtn:hover {
+  background: var(--accent-hover);
+}

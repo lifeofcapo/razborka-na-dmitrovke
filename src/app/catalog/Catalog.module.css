@@ -1,0 +1,323 @@
+.catalogPage {
+  padding: 2rem 0;
+  background: var(--catalog-bg);
+  min-height: calc(100vh - 200px);
+  transition: background-color 0.3s ease;
+}
+
+.catalogHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.catalogHeader h1 {
+  color: var(--text-color);
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.catalogHeader p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+.catalogContent {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 2rem;
+}
+
+/* Боковая панель фильтров */
+.catalogSidebar {
+  background: var(--sidebar-bg);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px var(--shadow-color);
+  height: fit-content;
+  position: sticky;
+  top: 100px;
+  transition: background-color 0.3s ease;
+}
+
+.filterSection {
+  margin-bottom: 2rem;
+}
+
+.filterSection h3 {
+  color: var(--text-color);
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 0.5rem;
+}
+
+.searchBox {
+  position: relative;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 0.8rem 2.5rem 0.8rem 1rem;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.searchBtn {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+}
+
+.categoryFilters {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.categoryOption {
+  display: block;
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  color: var(--text-color);
+  text-decoration: none;
+  border-left: 3px solid transparent;
+  margin-bottom: 2px;
+}
+
+.categoryOption:hover {
+  background: rgba(0, 0, 0, 0.05);
+  border-left-color: var(--link-color);
+}
+
+.categoryOption.active {
+  background: rgba(52, 152, 219, 0.1);
+  border-left-color: var(--link-color);
+  color: var(--link-color);
+  font-weight: 500;
+}
+
+.categoryOption span {
+  display: block;
+  width: 100%;
+}
+
+.priceFilter {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%; /* Занимает всю ширину сайдбара */
+}
+
+
+.priceInput {
+  flex: 1;
+  padding: 0.8rem;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  -moz-appearance: textfield;
+  box-sizing: border-box; /* Важно: учитываем border в общей ширине */
+  width: 50%;
+}
+
+.priceInput:focus {
+  outline: none;
+  border-color: var(--link-color);
+}
+
+.priceInput::-webkit-outer-spin-button,
+.priceInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.clearFilters {
+  width: 100%;
+  padding: 0.8rem;
+  background: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s ease;
+}
+
+.clearFilters:hover {
+  background: var(--accent-hover);
+}
+
+/* Основной контент каталога */
+.catalogMain {
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 2px 10px var(--shadow-color);
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+}
+
+.catalogInfo {
+  padding: 1.5rem;
+  background: var(--catalog-bg);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.productsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
+
+.productCard {
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  background: var(--card-bg);
+}
+
+.productCard:hover {
+  box-shadow: 0 8px 25px var(--shadow-color);
+}
+
+.productImage {
+  height: 200px;
+  background: var(--catalog-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.imagePlaceholder {
+  font-size: 3rem;
+  color: var(--text-secondary);
+}
+
+.productInfo {
+  padding: 1.5rem;
+}
+
+.productBrand {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+
+.productName {
+  color: var(--text-color);
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.productPrice {
+  color: var(--text-color);
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.noResults {
+  padding: 2rem;
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+/* Стили для поиска по автомобилю */
+.carSearch {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.selectionItem {
+  width: 100%;
+}
+
+.carSelect {
+  width: 100%;
+  padding: 0.8rem;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.7rem center;
+  background-size: 1rem;
+}
+
+.carSelect:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.advancedToggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--link-color);
+  font-weight: 500;
+  margin-top: 0.5rem;
+}
+
+.advancedParams {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding: 1rem;
+  background: var(--sidebar-bg);
+  border-radius: 8px;
+  margin-top: 0.5rem;
+  border: 1px solid var(--border-color);
+}
+
+.clearButton {
+  width: 100%;
+  padding: 0.8rem;
+  background: none;
+  border: 1px solid var(--accent-color);
+  color: var(--accent-color);
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.clearButton:hover {
+  background: rgba(231, 76, 60, 0.1);
+}
+
+/* Дополнительные стили для карточек товаров */
+.productPartNumber {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
