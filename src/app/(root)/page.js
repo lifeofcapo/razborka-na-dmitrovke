@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import '../styles/dashboard.css';
+import '../dashboard.css';
 import SearchForm from '@/components/DashboardSearchForm';
-import ImageComponent from '@/components/ImageComponent';
+import ImageComponent from '@/components/elements/ImageComponent';
 import { categories } from './data/Products';
 import { carBrands } from './data/CarParts';
 
@@ -64,7 +64,7 @@ export default function Home() {
       {/* Секция с марками автомобилей */}
       <section className="brands-section">
         <div className="container">
-          <h2 className="section-title">Марки автомобилей</h2>
+          <h2 className="section-title">Выберите марку автомобиля</h2>
           <div className="brands-grid">
             {carBrands.map((brand, index) => (
               <Link 
@@ -72,9 +72,6 @@ export default function Home() {
                 key={index}
                 className="brand-card"
               >
-                <div className="brand-logo">
-                  {brand.charAt(0)}
-                </div>
                 <span className="brand-name">{brand}</span>
               </Link>
             ))}
@@ -93,7 +90,6 @@ export default function Home() {
                 key={index}
                 className="category-card"
               >
-                <span className="category-icon">{category.icon}</span>
                 <div className="category-info">
                   <h3 className="category-title">{category.name}</h3>
                 </div>

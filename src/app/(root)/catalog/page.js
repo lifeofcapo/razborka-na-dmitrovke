@@ -4,9 +4,9 @@ import CartButton from './components/CartButton';
 import { useState } from 'react';
 import { FaSearch, FaCar, FaChevronDown, FaChevronUp, FaTimes } from 'react-icons/fa';
 import { BsVinylFill } from 'react-icons/bs';
-import { products , categories } from '@/app/data/Products';
-import { bodyTypes, transmissions, fuelTypes, engineVolumes } from '@/app/data/Filters';
-import { carBrands, carGenerations, carModels, carParts } from '@/app/data/CarParts';
+import { products , categories } from '@/app/(root)/data/Products';
+import { bodyTypes, transmissions, fuelTypes, engineVolumes } from '@/app/(root)/data/Filters';
+import { carBrands, carGenerations, carModels, carParts } from '@/app/(root)/data/CarParts';
 
 export default function Catalog() {
   const [searchQuery, setSearchQuery] = useState('');

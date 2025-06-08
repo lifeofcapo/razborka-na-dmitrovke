@@ -1,9 +1,9 @@
-import '../styles/globals.css';
+import '../globals.css';
 import { montserrat } from '@/lib/font';
 import Header from '@/components/modals/Header';
 import Footer from '@/components/modals/Footer';
 import { CartProvider } from '@/context/CartContext';
-import { ThemeProvider } from '@/context/ThemeContext'; // Если используете тему
+import { ThemeProvider } from '@/context/ThemeContext';
 
 export const metadata = {
   title: "Авторазборка На Дмитровке",

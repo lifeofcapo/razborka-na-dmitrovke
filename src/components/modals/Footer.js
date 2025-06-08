@@ -1,18 +1,27 @@
+'use client';
+import { useState } from 'react';
 import Link from 'next/link';
 import { FaTelegram, FaInstagram } from 'react-icons/fa';
-import ThemeLogo from '../ThemeLogo';
-import { ThemeProvider } from '@/context/ThemeContext';
+import ThemeLogo from '../elements/ThemeLogo';
+import CallbackModal from './CallbackModal';
 
 const currentYear = new Date().getFullYear();
 
 export default function Footer() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   return (
     <footer className="footer">
       <div className="container">
         <div className="footer-content">
           <div className="footer-brand-section">
             <div className="footer-brand">
-              <ThemeLogo />
+              <Link href="/">
+                <ThemeLogo />
+              </Link>
               <div className="social-links">
                 <a href="https://t.me/" target="_blank" rel="noopener noreferrer" className="social-link">
                   <FaTelegram size={26} />
@@ -23,8 +32,6 @@ export default function Footer() {
               </div>
             </div>
           </div>
-
-          {/* Центральная колонка - Навигация */}
           <div className="footer-nav-sections">
             <div className="footer-section">
               <h4>Покупателю</h4>
@@ -45,20 +52,16 @@ export default function Footer() {
               </div>
             </div>
           </div>
-
-          {/* Правая колонка - Контакты */}
           <div className="footer-contacts-section">
             <h4>Контакты</h4>
             <div className="footer-contacts">
               <p className="contact-phone">+7 900 111 22 33</p>
               <p className="contact-hours">Ежедневно с 8:00 до 20:30</p>
               <p className="contact-email">auto@razbor-na-dmitrovke.com</p>
-              <button className="callback-btn">Заказать звонок</button>
+              <button className="callback-btn" onClick={openModal}>Заказать звонок</button>
             </div>
           </div>
         </div>
-
-        {/* Disclaimer */}
         <div className="footer-disclaimer">
           <p className="disclaimer-text">
             Вся представленная на сайте информация, касающаяся комплектаций, технических характеристик, 
@@ -66,8 +69,6 @@ export default function Footer() {
             информационный характер и не является публичной офертой.
           </p>
         </div>
-
-        {/* Нижняя часть футера */}
         <div className="footer-bottom">
           <p>&copy; <span>{currentYear}</span> Autoservice.</p>
           <div className="footer-bottom-links">
@@ -75,10 +76,11 @@ export default function Footer() {
             <Link href="/terms">Условия использования</Link>
           </div>
           <div className="developer-credit">
-            <p>сайт разработан <a href="https://github.com/your-username" target="_blank" rel="noopener noreferrer">by web-developer</a></p>
+            <p>сайт разработан <a href="https://github.com/cashdrug" target="_blank" rel="noopener noreferrer">by web-developer</a></p>
           </div>
         </div>
       </div>
+    <CallbackModal isOpen={isModalOpen} onClose={closeModal} />
     </footer>
   );
 }

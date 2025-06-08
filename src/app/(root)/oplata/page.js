@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import styles from './page.module.css';
-import ImageComponent from '@/components/ImageComponent';
+import ImageComponent from '@/components/elements/ImageComponent';
 
 export default function OplataPage() {
     const [activeIndex, setActiveIndex] = useState(null);

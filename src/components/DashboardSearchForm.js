@@ -3,8 +3,9 @@
 import { useState } from 'react';
 import { FaCar, FaSearch, FaTimes, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import { BsVinylFill } from 'react-icons/bs';
-import { bodyTypes, transmissions, fuelTypes, engineVolumes } from '@/app/data/Filters';
-import { carBrands, carGenerations, carModels, carParts } from '@/app/data/CarParts';
+import { bodyTypes, fuelTypes, engineVolumes } from '@/app/(root)/data/Filters';
+import { carBrands, carGenerations, carModels, carParts } from '@/app/(root)/data/CarParts';
+import Link from 'next/link';
 
 export default function SearchForm() {
   const [activeTab, setActiveTab] = useState('partNumber');
@@ -83,9 +84,11 @@ export default function SearchForm() {
                 placeholder="Введите номер детали"
                 className="search-input"
               />
-              <button className="search-button">
-                НАЧАТЬ ПОИСК
-              </button>
+              <Link href={"/catalog"}>
+                <button className="search-button">
+                  НАЧАТЬ ПОИСК
+                </button>
+              </Link>
             </div>
           )}
 

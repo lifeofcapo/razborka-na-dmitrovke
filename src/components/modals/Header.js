@@ -3,11 +3,11 @@ import { useState } from 'react';
 import Link from 'next/link';
 
 import { useCart } from '@/context/CartContext';
-import ThemeToggle from '../ThemeToggle'; 
+import ThemeToggle from '../elements/ThemeToggle'; 
 import { FaCartArrowDown } from "react-icons/fa";
 import { CiUser } from "react-icons/ci";
 import CallbackModal from '@/components/modals/CallbackModal';
-import SmallThemeLogo from '../SmallThemeLogo';
+import SmallThemeLogo from '../elements/SmallThemeLogo';
 
 
 export default function Header() {
