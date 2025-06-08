@@ -2,8 +2,18 @@
 const nextConfig = {
   output: 'standalone',
   images: {
-    domains: ['ваш-домен-для-изображений.vercel.app'],
+    domains: ['razborka-na-dmitrovke.vercel.app'],
+  },
+  webpack: (config) => {
+    config.module.rules.push({
+      test: /\.(woff|woff2|eot|ttf|otf)$/i,
+      type: 'asset/resource',
+      generator: {
+        filename: 'static/fonts/[name][ext]',
+      },
+    });
+    return config;
   },
 };
 
-export default nextConfig; // ES-синтаксис!
+export default nextConfig;

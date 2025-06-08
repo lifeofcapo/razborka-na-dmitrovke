@@ -2,6 +2,7 @@
 import { useCart } from '@/context/CartContext';
 import Link from 'next/link';
 import styles from './Cart.module.css';
+import Image from 'next/image';
 
 export default function CartPage() {
   const { 
@@ -33,7 +34,7 @@ export default function CartPage() {
           <div className={styles.cartItems}>
             {cart.map(item => (
               <div key={item.id} className={styles.cartItem}>
-                <img 
+                <Image 
                   src={item.image} 
                   alt={item.name} 
                   className={styles.itemImage}
