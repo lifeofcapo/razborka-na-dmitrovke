@@ -1,0 +1,259 @@
+.searchContainer {
+  width: 100%;
+}
+
+.searchCard {
+  background: var(--card-bg);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.searchTabs {
+  display: flex;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.searchTab {
+  padding: 10px 15px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  color: var(--text-secondary);
+  border-bottom: 2px solid transparent;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.searchTab.active {
+  color: var(--text-color);
+  border-bottom: 2px solid var(--link-color);
+}
+
+.tabIcon {
+  font-size: 12px;
+}
+
+.searchContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.searchGroup {
+  display: flex;
+  margin-top: 15px;
+  gap: 10px;
+}
+
+.searchInput {
+  flex: 1;
+  padding: 12px 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 16px;
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: var(--link-color);
+}
+
+.searchButton {
+  background: var(--link-color);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.searchButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* VIN поиск */
+.vinSearch {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+  font-size: 14px;
+}
+
+.vinDescription, .vinAlternative {
+  padding: 8px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  flex: 1;
+}
+
+.vinDescription h3, .vinAlternative h3 {
+  margin-top: 0;
+  color: var(--text-color);
+}
+.secondaryButton {
+  background: var(--bg-color);
+  color: var(--link-color);
+  border: 1px solid var(--link-color);
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 11px;
+}
+
+/* Поиск по автомобилю */
+.carSearch {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  flex: 1;
+}
+
+.carSelection {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.carSelect {
+  padding: 8px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 14px;
+  background: var(--bg-color);
+  color: var(--text-color);
+  width: 100%;
+}
+
+.carSelect:focus {
+  outline: none;
+  border-color: var(--link-color);
+}
+
+.carSelect:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.selectionRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+.mainSelectionRow {
+  display: flex;
+  gap: 15px;
+  align-items: flex-end;
+}
+
+.selectionItem {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+}
+
+
+.selectionItem span {
+  font-size: 14px;
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.selectPartButton {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 12px 15px;
+  background: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+.searchActions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.clearButton {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+
+.clearButton:hover {
+  color: var(--accent-color);
+}
+
+.advancedParamsToggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  color: var(--link-color);
+  cursor: pointer;
+  font-size: 14px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.advancedParams {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.advancedParams.visible {
+  max-height: 200px;
+  transition: max-height 0.3s ease-in;
+}
+
+.advancedGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding: 10px 0;
+}
+
+.advancedCol {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.advancedCol .selectionRow {
+  flex-direction: column;
+  align-items: flex-start;
+  border: none;
+  padding: 0;
+}
+
+.advancedCol .carSelect {
+  max-width: 100%;
+  width: 100%;
+}

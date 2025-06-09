@@ -6,6 +6,7 @@ import { BsVinylFill } from 'react-icons/bs';
 import { bodyTypes, fuelTypes, engineVolumes } from '@/app/(root)/data/Filters';
 import { carBrands, carGenerations, carModels, carParts } from '@/app/(root)/data/CarParts';
 import Link from 'next/link';
+import styles from './Dashsearchform.module.css';
 
 export default function SearchForm() {
   const [activeTab, setActiveTab] = useState('partNumber');
@@ -53,39 +54,39 @@ export default function SearchForm() {
   };
 
   return (
-    <div className="search-container">
-      <div className="search-card">
-        <div className="search-tabs">
+    <div className={styles.searchContainer}>
+      <div className={styles.searchCard}>
+        <div className={styles.searchTabs}>
           <button 
-            className={`search-tab ${activeTab === 'partNumber' ? 'active' : ''}`}
+            className={`${styles.searchTab} ${activeTab === 'partNumber' ? styles.active : ''}`}
             onClick={() => setActiveTab('partNumber')}
           >
-            <FaSearch className="tab-icon" /> ПО НОМЕРУ ЗАПЧАСТИ
+            <FaSearch className={styles.tabIcon} /> ПО НОМЕРУ ЗАПЧАСТИ
           </button>
           <button 
-            className={`search-tab ${activeTab === 'vin' ? 'active' : ''}`}
+            className={`${styles.searchTab} ${activeTab === 'vin' ? styles.active : ''}`}
             onClick={() => setActiveTab('vin')}
           >
-            <BsVinylFill className="tab-icon" /> ПО VIN АВТОМОБИЛЯ
+            <BsVinylFill className={styles.tabIcon} /> ПО VIN АВТОМОБИЛЯ
           </button>
           <button 
-            className={`search-tab ${activeTab === 'car' ? 'active' : ''}`}
+            className={`${styles.searchTab} ${activeTab === 'car' ? styles.active : ''}`}
             onClick={() => setActiveTab('car')}
           >
-            <FaCar className="tab-icon" /> ПО АВТОМОБИЛЮ
+            <FaCar className={styles.tabIcon} /> ПО АВТОМОБИЛЮ
           </button>
         </div>
 
-        <div className="search-content">
+        <div className={styles.searchContent}>
           {activeTab === 'partNumber' && (
-            <div className="search-group">
+            <div className={styles.searchGroup}>
               <input
                 type="text"
                 placeholder="Введите номер детали"
-                className="search-input"
+                className={styles.searchInput}
               />
               <Link href={"/catalog"}>
-                <button className="search-button">
+                <button className={styles.searchButton}>
                   НАЧАТЬ ПОИСК
                 </button>
               </Link>
@@ -93,36 +94,38 @@ export default function SearchForm() {
           )}
 
           {activeTab === 'vin' && (
-            <div className="vin-search">
-              <div className="vin-description">
+            <div className={styles.vinSearch}>
+              <div className={styles.vinDescription}>
                 <h3>ПО ОРИГИНАЛЬНЫМ КАТАЛОГАМ</h3>
                 <p>VIN автомобиля является самым надежным идентификатором. Если ищете японский автомобиль, то введите FRAME</p>
-                <div className="search-group">
+                <div className={styles.searchGroup}>
                   <input
                     type="text"
                     placeholder="VIN или FRAME"
-                    className="search-input"
+                    className={styles.searchInput}
                   />
                 </div>
               </div>
-              <div className="vin-alternative">
+              <div className={styles.vinAlternative}>
                 <h3>ВЫБЕРИТЕ МОДЕЛЬ ПО ПАРАМЕТРАМ</h3>
                 <p>Если не помните VIN-номер, то воспользуйтесь поиском по параметрам в оригинальных каталогах</p>
-                <button className="secondary-button">
-                  ПОИСК ПО ПАРАМЕТРАМ
-                </button>
+                <Link href={"/catalog"}>
+                  <button className={styles.secondaryButton}>
+                    ПОИСК ПО ПАРАМЕТРАМ
+                  </button>
+                </Link>
               </div>
             </div>
           )}
 
           {activeTab === 'car' && (
-            <div className="car-search">
-              <div className="car-selection">
-                <div className="main-selection-row">
-                  <div className="selection-item">
+            <div className={styles.carSearch}>
+              <div className={styles.carSelection}>
+                <div className={styles.mainSelectionRow}>
+                  <div className={styles.selectionItem}>
                     <span>Марки</span>
                     <select 
-                      className="car-select"
+                      className={styles.carSelect}
                       value={selectedBrand}
                       onChange={handleBrandChange}
                     >
@@ -133,10 +136,10 @@ export default function SearchForm() {
                     </select>
                   </div>
                   
-                  <div className="selection-item">
+                  <div className={styles.selectionItem}>
                     <span>Модели</span>
                     <select 
-                      className="car-select"
+                      className={styles.carSelect}
                       value={selectedModel}
                       onChange={handleModelChange}
                       disabled={!selectedBrand}
@@ -148,10 +151,10 @@ export default function SearchForm() {
                     </select>
                   </div>
                   
-                  <div className="selection-item">
+                  <div className={styles.selectionItem}>
                     <span>Поколение</span>
                     <select 
-                      className="car-select"
+                      className={styles.carSelect}
                       value={selectedGeneration}
                       onChange={handleGenerationChange}
                       disabled={!selectedModel}
@@ -164,10 +167,10 @@ export default function SearchForm() {
                   </div>
                 </div>
                 
-                <div className="selection-row">
+                <div className={styles.selectionRow}>
                   <span>Выберите запчасть</span>
                   <select 
-                    className="car-select"
+                    className={styles.carSelect}
                     value={selectedPart}
                     onChange={handlePartChange}
                   >
@@ -178,18 +181,18 @@ export default function SearchForm() {
                   </select>
                 </div>
 
-                <div className="advanced-params-toggle" onClick={toggleAdvanced}>
+                <div className={styles.advancedParamsToggle} onClick={toggleAdvanced}>
                   <span>Дополнительные параметры</span>
                   {showAdvanced ? <FaChevronUp /> : <FaChevronDown />}
                 </div>
 
-                <div className={`advanced-params ${showAdvanced ? 'visible' : ''}`}>
-                  <div className="advanced-grid">
-                    <div className="advanced-col">
-                      <div className="selection-row">
+                <div className={`${styles.advancedParams} ${showAdvanced ? styles.visible : ''}`}>
+                  <div className={styles.advancedGrid}>
+                    <div className={styles.advancedCol}>
+                      <div className={styles.selectionRow}>
                         <span>Объем двигателя</span>
                         <select 
-                          className="car-select"
+                          className={styles.carSelect}
                           value={engineVolume}
                           onChange={(e) => setEngineVolume(e.target.value)}
                         >
@@ -203,11 +206,11 @@ export default function SearchForm() {
                       </div>
                     </div>
                     
-                    <div className="advanced-col">
-                      <div className="selection-row">
+                    <div className={styles.advancedCol}>
+                      <div className={styles.selectionRow}>
                         <span>Тип топлива</span>
                         <select 
-                          className="car-select"
+                          className={styles.carSelect}
                           value={fuelType}
                           onChange={(e) => setFuelType(e.target.value)}
                         >
@@ -219,11 +222,11 @@ export default function SearchForm() {
                       </div>
                     </div>
                     
-                    <div className="advanced-col">
-                      <div className="selection-row">
+                    <div className={styles.advancedCol}>
+                      <div className={styles.selectionRow}>
                         <span>Кузов</span>
                         <select 
-                          className="car-select"
+                          className={styles.carSelect}
                           value={bodyType}
                           onChange={(e) => setBodyType(e.target.value)}
                         >
@@ -238,15 +241,15 @@ export default function SearchForm() {
                 </div>
               </div>
               
-              <div className="search-actions">
+              <div className={styles.searchActions}>
                 <button 
-                  className="search-button"
+                  className={styles.searchButton}
                   disabled={!selectedPart || (!selectedBrand && !selectedModel && !selectedGeneration)}
                 >
                   НАЧАТЬ ПОИСК
                 </button>
                 <button 
-                  className="clear-button"
+                  className={styles.clearButton}
                   onClick={clearSelection}
                 >
                   Очистить <FaTimes />

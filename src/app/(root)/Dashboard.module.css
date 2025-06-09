@@ -1,0 +1,423 @@
+.heroContent {
+  width: 100%;
+  text-align: center; 
+  margin-bottom: 3rem; 
+}
+
+.heroContainer {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  gap: 3rem;
+}
+
+.heroMain {
+  display: flex;
+  align-items: flex-start;
+  gap: 3rem;
+  width: 100%;
+}
+
+.heroLeft {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.heroTitle {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  margin-top: 50px;
+  line-height: 1.2;
+  color: var(--text-color);
+}
+
+.heroTitleAccent {
+  color: var(--link-color);
+}
+
+.heroSubtitle {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
+.heroImageContainer {
+  flex: 1;
+  min-width: 0;
+}
+
+.heroImagePlaceholder {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  background-color: var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.sectionTitle {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.sectionSubtitle {
+  text-align: center;
+  color: var(--text-secondary);
+  margin-bottom: 3rem;
+  font-size: 1rem;
+}
+
+/* Секция с марками автомобилей */
+.brandsSection {
+  padding: 4rem 0;
+  background-color: var(--bg-color);
+}
+
+.brandsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.brandCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.2rem;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  min-width: 120px;
+}
+
+.brandCard:hover {
+  background-color: var(--catalog-bg);
+}
+
+.brandName {
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.categoriesSection {
+  padding: 4rem 0;
+  background-color: var(--catalog-bg);
+}
+
+.categoriesGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 300px 300px;
+  gap: 1rem;
+}
+
+.categoryCard {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 2px 10px var(--shadow-color);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  overflow: hidden;
+  position: relative;
+}
+
+.categoryCard:hover {
+  box-shadow: 0 8px 25px var(--shadow-color);
+}
+
+.categoryImageContainer {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  min-height: 150px;
+}
+
+.categoryImage {
+  width: 100%;
+  height: 100%;
+}
+
+.categoryInfo {
+  padding: 1.5rem;
+  background: var(--card-bg);
+  position: relative;
+  z-index: 2;
+}
+
+.categoryTitle {
+  font-size: 1.125rem;
+  font-weight: bold;
+  margin: 0;
+  color: var(--text-color);
+  text-align: center;
+}
+
+.verticalCard {
+  grid-row: span 2;
+}
+
+.horizontalCard {
+  grid-row: span 1;
+}
+
+/* Первая вертикальная карточка - Двигатель */
+.categoriesGrid > :nth-child(1) {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+}
+
+/* Горизонтальные карточки - Шины и диски, Оптика */
+.categoriesGrid > :nth-child(2) {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.categoriesGrid > :nth-child(3) {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+/* Вертикальная карточка - Детали кузова */
+.categoriesGrid > :nth-child(4) {
+  grid-column: 3;
+  grid-row: 1 / span 2;
+}
+
+/* Горизонтальные карточки - Трансмиссия, Электрооснащение */
+.categoriesGrid > :nth-child(5) {
+  grid-column: 4;
+  grid-row: 1;
+}
+
+.categoriesGrid > :nth-child(6) {
+  grid-column: 4;
+  grid-row: 2;
+}
+
+/* Секция преимуществ */
+.benefitsSection {
+  padding: 4rem 0;
+  background-color: var(--catalog-bg);
+}
+
+.benefitsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.benefitCard {
+  text-align: center;
+  min-width: 200px;
+  flex: 0 1 auto;
+}
+
+.benefitIcon {
+  width: 4rem;
+  height: 4rem;
+  background-color: var(--sidebar-bg);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  font-size: 1.5rem;
+}
+
+.benefitTitle {
+  font-size: 1.125rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.benefitDescription {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+/* Секция новостей */
+.newsSection {
+  padding: 4rem 0;
+  background-color: var(--bg-color);
+}
+
+.newsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Автоподбор колонок */
+  gap: 1.5rem;
+  overflow-x: auto; /* Добавляем горизонтальный скролл при необходимости */
+  padding-bottom: 1rem; /* Чтобы скролл не перекрывал контент */
+  scrollbar-width: thin; /* Для Firefox */
+  scrollbar-color: var(--border-color) transparent; /* Для Firefox */
+}
+
+.newsGrid::-webkit-scrollbar {
+  height: 6px;
+}
+
+.newsGrid::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.newsGrid::-webkit-scrollbar-thumb {
+  background-color: var(--border-color);
+  border-radius: 3px;
+}
+
+.newsCard {
+  min-width: 300px; 
+  background-color: var(--catalog-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px var(--shadow-color);
+  transition: box-shadow 0.3s ease;
+  flex-shrink: 0; 
+}
+
+.newsCard:hover {
+  box-shadow: 0 8px 25px var(--shadow-color);
+}
+
+.newsImage {
+  height: 12rem;
+  background-color: var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+}
+
+.newsContent {
+  padding: 1.5rem;
+}
+
+.newsDate {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.newsTitle {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin: 0.5rem 0 1rem;
+  color: var(--text-color);
+}
+
+.newsExcerpt {
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+/* Адаптивные стили */
+@media (max-width: 640px) {
+  .heroContainer {
+    flex-direction: row;
+  }
+  
+  .heroContent {
+    width: 50%;
+  }
+  
+  .heroImageContainer {
+    width: 50%;
+  }
+  
+  .brandsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .categoriesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .newsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .benefitsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 1024px) {
+  .brandsGrid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  
+  .categoriesGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .newsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+    .categoriesGrid,
+  .newsGrid {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .brandsGrid,
+  .categoriesGrid,
+  .benefitsGrid,
+  .newsGrid {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .categoryCard,
+  .newsCard
+  .benefitCard {
+    width: 100%;
+    min-width: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .brandsgrid  {
+    justify-content: center;
+  }
+  
+  .categoriesgrid {
+    flex-direction: row;
+    justify-content: center;
+  }
+  
+  .categoryCard {
+    min-width: 200px;
+  }
+  
+  .newsCard {
+    min-width: 250px;
+  }
+    .carSelect {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .categoriesGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .verticalCard,
+  .horizontalCard {
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
+}
