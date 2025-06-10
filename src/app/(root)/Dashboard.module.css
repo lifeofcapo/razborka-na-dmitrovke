@@ -59,10 +59,10 @@
   overflow: hidden;
 }
 .sectionTitle {
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: bold;
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   color: var(--text-color);
 }
 
@@ -147,7 +147,7 @@
 }
 
 .categoryInfo {
-  padding: 1.5rem;
+  padding: 0.5rem;
   background: var(--card-bg);
   position: relative;
   z-index: 2;
@@ -202,48 +202,139 @@
   grid-column: 4;
   grid-row: 2;
 }
-
-/* Секция преимуществ */
 .benefitsSection {
   padding: 4rem 0;
   background-color: var(--catalog-bg);
 }
 
 .benefitsGrid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 3rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .benefitCard {
-  text-align: center;
-  min-width: 200px;
-  flex: 0 1 auto;
+  position: relative;
+  padding: 2.5rem 2rem;
+  border-radius: 24px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.benefitIcon {
-  width: 4rem;
-  height: 4rem;
-  background-color: var(--sidebar-bg);
-  border-radius: 50%;
+.benefitCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 24px;
+  padding: 2px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.3), rgba(255,255,255,0.1));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: exclude;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+}
+
+.benefitCard:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+}
+
+.benefitCard:nth-child(1) {
+  background: linear-gradient(90deg, #fff8bb 0%, #ffc5c5 100%);
+  color: #1a365d;
+}
+
+.benefitCard:nth-child(2) {
+  background: linear-gradient(90deg, #e8f8e8 0%, #d4f4d4 100%);
+  color: #1a4d1a;
+}
+
+.benefitCard:nth-child(3) {
+  background: linear-gradient(90deg, #f0f0ff 0%, #b3e5ff 100%);
+  color: #2d2d5d;
+}
+
+.benefitCard:nth-child(4) {
+  background: linear-gradient(90deg, #e6dfff 0%, #bbbbfc 100%);
+  color: #1a4d1a;
+}
+
+.benefitIconCustom {
+  position: absolute;
+  top: 50%;
+  right: -20px;
+  transform: translateY(-50%);
+  width: 120px;
+  height: 120px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 1rem;
-  font-size: 1.5rem;
+  flex-shrink: 0;
+  z-index: 10;
 }
 
 .benefitTitle {
-  font-size: 1.125rem;
-  font-weight: bold;
+  font-size: 1.3rem;
+  font-weight: 600;
   margin-bottom: 0.5rem;
-  color: var(--text-color);
+  line-height: 1.3;
+  max-width: calc(100% - 100px);
 }
 
 .benefitDescription {
-  color: var(--text-secondary);
-  font-size: 0.875rem;
+  font-size: 0.95rem;
+  line-height: 1.6; 
+  font-weight: 500;
+  max-width: calc(100% - 210px);
+}
+
+.benefitContent {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.benefitHeader {
+  display: block;
+}
+
+.benefitTextContent {
+  flex: 1;
+}
+
+.icon-fire {
+  margin-right: 155px;
+  margin-bottom: 50px;
+}
+
+.icon-checkmark {
+  margin-right: 105px;
+  margin-bottom: 20px;
+}
+
+.icon-price {
+  margin-right: 90px;
+  margin-bottom: 30px;
+}
+
+.icon-tool {
+  margin-right: 80px;
+  margin-bottom: 10px;
 }
 
 /* Секция новостей */

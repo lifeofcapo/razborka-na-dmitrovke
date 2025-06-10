@@ -3,6 +3,7 @@ import styles from './Dashboard.module.css';
 import SearchForm from '@/components/DashboardSearchForm';
 import ImageComponent from '@/components/elements/ImageComponent';
 import { carBrands } from './data/CarParts';
+import BenefitCard from '@/components/modals/BenefitCard';
 
 export default function Home() {
   // Пример новостей
@@ -122,7 +123,7 @@ export default function Home() {
       <div className="container">
         <h2 className={styles.sectionTitle}>Популярные категории</h2>
         <p className={styles.sectionSubtitle}>
-          Все запчасти, представленные в каталоге, есть в наличии на складе и могут быть отправлены в кратчайшие сроки.
+          Все запчасти, представленные в каталоге, есть в наличии на складе
         </p>
         <div className={styles.categoriesGrid}>
           {popularCategories.map((category, index) => (
@@ -137,7 +138,7 @@ export default function Home() {
                   alt={category.alt}
                   className={styles.categoryImage}
                   objectFit="cover"
-                  priority={index < 4} // Приоритет для первых 4 изображений
+                  priority={index < 4} 
                 />
               </div>
               <div className={styles.categoryInfo}>
@@ -149,29 +150,101 @@ export default function Home() {
       </div>
     </section>
 
-      {/* Дополнительная секция - Преимущества */}
-      <section className={styles.benefitsSection}>
-        <div className="container">
-          <h2 className={styles.sectionTitle}>Почему выбирают нас</h2>
-          <div className={styles.benefitsGrid}>
-            <div className={styles.benefitsCard}>
-              <div className={styles.benefitIcon}>✅</div>
-              <h3 className={styles.benefitTitle}>Гарантия качества</h3>
-              <p className={styles.benefitDescription}>Только проверенные поставщики</p>
-            </div>
-            <div className={styles.benefitsCard}>
-              <div className={styles.benefitIcon}>💰</div>
-              <h3 className={styles.benefitTitle}>Лучшие цены</h3>
-              <p className={styles.benefitDescription}>Дешевле, чем у конкурентов</p>
-            </div>
-            <div className={styles.benefitsCard}>
-              <div className={styles.benefitIcon}>🛠️</div>
-              <h3 className={styles.benefitTitle}>Профессиональная консультация</h3>
-              <p className={styles.benefitDescription}>Поможем с выбором</p>
+    <section className={styles.benefitsSection}>
+      <div className="container">
+        <h2 className={styles.sectionTitle}>Почему выбирают нас</h2>
+        <div className={styles.benefitsGrid}>
+          <Link href={'/catalog'}>
+          <div className={styles.benefitCard} >
+            <div className={styles.benefitContent}>
+              <div className={styles.benefitHeader}>
+                <div className={styles.benefitTextContent}>
+                  <h3 className={styles.benefitTitle}>Огромный ассортимент</h3>
+                  <p className={styles.benefitDescription}>На выбор более 100 000 автозапчастей</p>
+                </div>
+                <div className={`${styles.benefitIconCustom} ${styles.iconFire}`}>
+                  <ImageComponent
+                    src="/images/advantages/fire.png"
+                    alt="Fire icon"
+                    fill={false}
+                    width={178}
+                    height={178}
+                    objectFit="contain"
+                  />
+                </div>
+              </div>
             </div>
           </div>
+          </Link>
+          <Link href={'/catalog'}>
+          <div className={styles.benefitCard}>
+            <div className={styles.benefitContent}>
+              <div className={styles.benefitHeader}>
+                <div className={styles.benefitTextContent}>
+                  <h3 className={styles.benefitTitle}>Гарантия качества</h3>
+                  <p className={styles.benefitDescription}>Только проверенные поставщики и оригинальные запчасти</p>
+                </div>
+                <div className={`${styles.benefitIconCustom} ${styles.iconCheckmark}`}>
+                  <ImageComponent
+                    src="/images/advantages/checkmark.png"
+                    alt="Checkmark icon"
+                    fill={false}
+                    width={178}
+                    height={178}
+                    objectFit="contain"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          </Link>
+          <Link href={'/catalog'}>
+          <div className={styles.benefitCard}>
+            <div className={styles.benefitContent}>
+              <div className={styles.benefitHeader}>
+                <div className={styles.benefitTextContent}>
+                  <h3 className={styles.benefitTitle}>Лучшие цены</h3>
+                  <p className={styles.benefitDescription}>Конкурентные цены и выгодные предложения для клиентов</p>
+                </div>
+                <div className={`${styles.benefitIconCustom} ${styles.iconPrice}`}>
+                  <ImageComponent
+                    src="/images/advantages/price.png"
+                    alt="Price icon"
+                    fill={false}
+                    width={168}
+                    height={168}
+                    objectFit="contain"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          </Link>
+          <Link href={'/catalog'}>
+          <div className={styles.benefitCard}>
+            <div className={styles.benefitContent}>
+              <div className={styles.benefitHeader}>
+                <div className={styles.benefitTextContent}>
+                  <h3 className={styles.benefitTitle}>Профессиональная консультация</h3>
+                  <p className={styles.benefitDescription}>Наши эксперты помогут с выбором и дадут рекомендации</p>
+                </div>
+                <div className={`${styles.benefitIconCustom} ${styles.iconTool}`}>
+                  <ImageComponent
+                    src="/images/advantages/tool.png"
+                    alt="Tool icon"
+                    fill={false}
+                    width={148}
+                    height={148}
+                    objectFit="contain"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          </Link>
         </div>
-      </section>
+      </div>
+    </section>
 
       <section className={styles.newsSection}>
         <div className="container">
