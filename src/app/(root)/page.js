@@ -3,7 +3,6 @@ import styles from './Dashboard.module.css';
 import SearchForm from '@/components/DashboardSearchForm';
 import ImageComponent from '@/components/elements/ImageComponent';
 import { carBrands } from './data/CarParts';
-import BenefitCard from '@/components/modals/BenefitCard';
 
 export default function Home() {
   // Пример новостей
