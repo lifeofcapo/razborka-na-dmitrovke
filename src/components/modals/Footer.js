@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { FaTelegram, FaInstagram } from 'react-icons/fa';
 import ThemeLogo from '../elements/ThemeLogo';
 import CallbackModal from './CallbackModal';
+import styles from './Footer.module.css';
 
 const currentYear = new Date().getFullYear();
 
@@ -14,28 +15,28 @@ export default function Footer() {
   const closeModal = () => setIsModalOpen(false);
 
   return (
-    <footer className="footer">
+    <footer className={styles.footer}>
       <div className="container">
-        <div className="footer-content">
-          <div className="footer-brand-section">
-            <div className="footer-brand">
+        <div className={styles.footerContent}>
+          <div className={styles.footerbrandSection}>
+            <div className={styles.footerBrand}>
               <Link href="/">
                 <ThemeLogo />
               </Link>
-              <div className="social-links">
-                <a href="https://t.me/" target="_blank" rel="noopener noreferrer" className="social-link">
+              <div className={styles.socialLinks}>
+                <a href="https://t.me/" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
                   <FaTelegram size={26} />
                 </a>
-                <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" className="social-link">
+                <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
                   <FaInstagram size={26} />
                 </a>
               </div>
             </div>
           </div>
-          <div className="footer-nav-sections">
-            <div className="footer-section">
+          <div className={styles.footernavSections}>
+            <div className={styles.footerSection}>
               <h4>Покупателю</h4>
-              <div className="footer-links">
+              <div className={styles.footerLinks}>
                 <Link href="/">Главная</Link>
                 <Link href="/catalog">Каталог товаров</Link>
                 <Link href="/oplata">Способы Оплаты</Link>
@@ -43,40 +44,40 @@ export default function Footer() {
               </div>
             </div>
 
-            <div className="footer-section">
+            <div className={styles.footerSection}>
               <h4>Компания</h4>
-              <div className="footer-links">
+              <div className={styles.footerLinks}>
                 <Link href="/about">О нас</Link>
                 <Link href="/blog">Новости</Link>
                 <Link href="/otzyvy">Отзывы</Link>
               </div>
             </div>
           </div>
-          <div className="footer-contacts-section">
+          <div className={styles.footercontactsSection}>
             <h4>Контакты</h4>
-            <div className="footer-contacts">
-              <p className="contact-phone">+7 900 111 22 33</p>
-              <p className="contact-hours">Ежедневно с 8:00 до 20:30</p>
-              <p className="contact-email">auto@razbor-na-dmitrovke.com</p>
-              <button className="callback-btn" onClick={openModal}>Заказать звонок</button>
+            <div className={styles.footerContacts}>
+              <p className={styles.contactsPhone}>+7 900 111 22 33</p>
+              <p className={styles.contactsHours}>Ежедневно с 8:00 до 20:30</p>
+              <p className={styles.contactsEmail}>auto@razbor-na-dmitrovke.com</p>
+              <button className="callbackBtn" onClick={openModal}>Заказать звонок</button>
             </div>
           </div>
         </div>
-        <div className="footer-disclaimer">
-          <p className="disclaimer-text">
+        <div className={styles.footerDisclaimer}>
+          <p className={styles.disclaimerText}>
             Вся представленная на сайте информация, касающаяся комплектаций, технических характеристик, 
             цветовых сочетаний, а также стоимости автомобилей и сервисного обслуживания носит 
             информационный характер и не является публичной офертой.
           </p>
         </div>
-        <div className="footer-bottom">
+        <div className={styles.footerBottom}>
           <p>&copy; <span>{currentYear}</span> Autoservice.</p>
-          <div className="footer-bottom-links">
+          <div className={styles.footerbottomLinks}>
             <Link href="/privacy">Политика конфиденциальности</Link>
             <Link href="/terms">Условия использования</Link>
           </div>
-          <div className="developer-credit">
-            <p>сайт разработан <a href="https://github.com/cashdrug" target="_blank" rel="noopener noreferrer">by web-developer</a></p>
+          <div className={styles.developerCredit}>
+            <p>Cайт разработан <a href="https://github.com/cashdrug" target="_blank" rel="noopener noreferrer">by web-developer</a></p>
           </div>
         </div>
       </div>

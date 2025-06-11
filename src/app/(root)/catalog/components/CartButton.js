@@ -10,7 +10,7 @@ export default function CartButton({ product, className = '' }) {
         if (!product) return;
         addToCart(product);
         }}
-      className="callback-btn"
+      className="callbackBtn"
       aria-label="В корзину"
     >
       В корзину

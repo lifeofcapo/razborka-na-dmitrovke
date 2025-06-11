@@ -31,28 +31,28 @@ export default function Home() {
       name: 'Двигатель',  
       type: 'vertical', 
       image: '/images/categories/engine.jpg', 
-      alt: 'Трансмиссия автомобиля'
+      alt: 'Двигатель'
     },
     { 
       id: 'brake-pads', 
       name: 'Шины и диски', 
       type: 'horizontal',
       image: '/images/categories/wheel.jpg',
-      alt: 'Трансмиссия автомобиля'
+      alt: 'Шины и диски'
     },
     { 
       id: 'optics', 
       name: 'Оптика', 
       type: 'horizontal',
       image: '/images/categories/optics.jpg',
-      alt: 'Трансмиссия автомобиля'
+      alt: 'Оптика'
     },
     { 
       id: 'body-exterior', 
       name: 'Детали кузова', 
       type: 'vertical',
       image: '/images/categories/exterior.jpg', 
-      alt: 'Трансмиссия автомобиля'
+      alt: 'Детали кузова'
     },
     { 
       id: 'transmission', 
@@ -66,7 +66,7 @@ export default function Home() {
       name: 'Электрооснащение', 
       type: 'horizontal',
       image: '/images/categories/electricial.jpg',
-      alt: 'Трансмиссия автомобиля'
+      alt: 'Электрооснащение'
     },
   ];
 
@@ -103,7 +103,7 @@ export default function Home() {
       {/* Секция с марками автомобилей */}
       <section className={styles.brandsSection}>
         <div className="container">
-          <h2 className={styles.sectionTitle}>Выберите марку автомобиля</h2>
+          <h2 className="sectionTitle">Выберите марку автомобиля</h2>
           <div className={styles.brandsGrid}>
             {filteredBrands.map((brand, index) => (
               <Link 
@@ -120,8 +120,8 @@ export default function Home() {
 
     <section className={styles.categoriesSection}>
       <div className="container">
-        <h2 className={styles.sectionTitle}>Популярные категории</h2>
-        <p className={styles.sectionSubtitle}>
+        <h2 className="sectionTitle">Популярные категории</h2>
+        <p className="sectionSubtitle">
           Все запчасти, представленные в каталоге, есть в наличии на складе
         </p>
         <div className={styles.categoriesGrid}>
@@ -151,31 +151,30 @@ export default function Home() {
 
     <section className={styles.benefitsSection}>
       <div className="container">
-        <h2 className={styles.sectionTitle}>Почему выбирают нас</h2>
+        <h2 className="sectionTitle">Почему выбирают нас</h2>
+        <Link href={'/catalog'}>
         <div className={styles.benefitsGrid}>
-          <Link href={'/catalog'}>
-          <div className={styles.benefitCard} >
-            <div className={styles.benefitContent}>
-              <div className={styles.benefitHeader}>
-                <div className={styles.benefitTextContent}>
-                  <h3 className={styles.benefitTitle}>Огромный ассортимент</h3>
-                  <p className={styles.benefitDescription}>На выбор более 100 000 автозапчастей</p>
-                </div>
-                <div className={`${styles.benefitIconCustom} ${styles.iconFire}`}>
-                  <ImageComponent
-                    src="/images/advantages/fire.png"
-                    alt="Fire icon"
-                    fill={false}
-                    width={178}
-                    height={178}
-                    objectFit="contain"
-                  />
+            <div className={styles.benefitCard} >
+              <div className={styles.benefitContent}>
+                <div className={styles.benefitHeader}>
+                  <div className={styles.benefitTextContent}>
+                    <h3 className={styles.benefitTitle}>Огромный ассортимент</h3>
+                    <p className={styles.benefitDescription}>На выбор более 100 000 автозапчастей</p>
+                  </div>
+                  <div className={`${styles.benefitIconCustom} ${styles.iconFire}`}>
+                    <ImageComponent
+                      src="/images/advantages/fire.png"
+                      alt="Fire icon"
+                      fill={false}
+                      width={178}
+                      height={178}
+                      objectFit="contain"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          </Link>
-          <Link href={'/catalog'}>
+
           <div className={styles.benefitCard}>
             <div className={styles.benefitContent}>
               <div className={styles.benefitHeader}>
@@ -188,16 +187,14 @@ export default function Home() {
                     src="/images/advantages/checkmark.png"
                     alt="Checkmark icon"
                     fill={false}
-                    width={178}
-                    height={178}
+                    width={198}
+                    height={198}
                     objectFit="contain"
                   />
                 </div>
               </div>
             </div>
           </div>
-          </Link>
-          <Link href={'/catalog'}>
           <div className={styles.benefitCard}>
             <div className={styles.benefitContent}>
               <div className={styles.benefitHeader}>
@@ -218,8 +215,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          </Link>
-          <Link href={'/catalog'}>
+
           <div className={styles.benefitCard}>
             <div className={styles.benefitContent}>
               <div className={styles.benefitHeader}>
@@ -232,22 +228,22 @@ export default function Home() {
                     src="/images/advantages/tool.png"
                     alt="Tool icon"
                     fill={false}
-                    width={148}
-                    height={148}
+                    width={168}
+                    height={188}
                     objectFit="contain"
                   />
                 </div>
               </div>
             </div>
           </div>
-          </Link>
         </div>
+        </Link>
       </div>
     </section>
 
       <section className={styles.newsSection}>
         <div className="container">
-          <h2 className={styles.sectionTitle}>Новости и акции</h2>
+          <h2 className="sectionTitle">Новости и акции</h2>
           <div className={styles.newsGrid}>
             {news.map((item, index) => (
               <div key={index} className={styles.newsCard}>

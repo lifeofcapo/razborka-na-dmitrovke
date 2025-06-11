@@ -58,22 +58,7 @@
   border-radius: 12px;
   overflow: hidden;
 }
-.sectionTitle {
-  font-size: 3rem;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 2rem;
-  color: var(--text-color);
-}
 
-.sectionSubtitle {
-  text-align: center;
-  color: var(--text-secondary);
-  margin-bottom: 3rem;
-  font-size: 1rem;
-}
-
-/* Секция с марками автомобилей */
 .brandsSection {
   padding: 4rem 0;
   background-color: var(--bg-color);
@@ -203,7 +188,8 @@
   grid-row: 2;
 }
 .benefitsSection {
-  padding: 4rem 0;
+  padding-bottom: 6rem;
+  padding-top: 6rem;
   background-color: var(--catalog-bg);
 }
 
@@ -275,7 +261,7 @@
   position: absolute;
   top: 50%;
   right: -20px;
-  transform: translateY(-50%);
+  transform: translateY(-70%);
   width: 120px;
   height: 120px;
   display: flex;
@@ -317,24 +303,23 @@
   flex: 1;
 }
 
-.icon-fire {
-  margin-right: 155px;
-  margin-bottom: 50px;
-}
-
-.icon-checkmark {
-  margin-right: 105px;
-  margin-bottom: 20px;
-}
-
-.icon-price {
+.iconFire {
   margin-right: 90px;
-  margin-bottom: 30px;
 }
 
-.icon-tool {
-  margin-right: 80px;
-  margin-bottom: 10px;
+.iconCheckmark {
+  margin-right: 90px;
+transform: translateY(-80%);
+}
+
+.iconPrice {
+  margin-right: 90px;
+transform: translateY(-65%)
+}
+
+.iconTool {
+  margin-right: 40px;
+
 }
 
 /* Секция новостей */
@@ -345,12 +330,12 @@
 
 .newsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Автоподбор колонок */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1.5rem;
-  overflow-x: auto; /* Добавляем горизонтальный скролл при необходимости */
-  padding-bottom: 1rem; /* Чтобы скролл не перекрывал контент */
-  scrollbar-width: thin; /* Для Firefox */
-  scrollbar-color: var(--border-color) transparent; /* Для Firefox */
+  overflow-x: auto; 
+  padding-bottom: 1rem; 
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-color) transparent; 
 }
 
 .newsGrid::-webkit-scrollbar {

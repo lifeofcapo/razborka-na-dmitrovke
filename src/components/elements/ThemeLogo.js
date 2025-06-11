@@ -6,14 +6,14 @@ export default function ThemeLogo({ className = '' }) {
   const { theme } = useTheme();
   
   return (
-    <div className={`logo-container ${className}`}>
+    <div className={`footer-logo-container ${className}`}>
       {theme === 'dark' ? (
         <Image
           src="/images/dark-logo.png"
           alt="Авто Разбор - логотип"
           fill
           priority
-          className="logo-container"
+          className="footer-logo-container"
         />
       ) : (
         <Image
@@ -21,7 +21,7 @@ export default function ThemeLogo({ className = '' }) {
           alt="Авто Разбор - логотип"
           fill
           priority
-          className="logo-container"
+          className="footer-logo-container"
         />
       )}
     </div>

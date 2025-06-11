@@ -1,0 +1,188 @@
+.aboutPage {
+  padding: 2rem 0 4rem;
+  background-color: var(--bg-color);
+}
+
+.aboutHero {
+  text-align: center;
+  padding: 4rem 0;
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  margin-bottom: 3rem;
+  background: linear-gradient(135deg, rgba(95, 14, 255, 0.1) 0%, rgba(0, 94, 255, 0.1) 100%);
+}
+
+.gradientText {
+  background: linear-gradient(90deg, var(--link-color), var(--btn-gradient));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+.heroSubtitle {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 1rem auto 0;
+}
+
+.aboutCard {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 20px var(--shadow-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.aboutCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px var(--shadow-color);
+}
+
+.missionCard {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.cardContent {
+  flex: 1;
+}
+
+.cardImage {
+  flex: 1;
+  min-height: 300px;
+  position: relative;
+}
+
+.imagePlaceholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(95, 14, 255, 0.2) 0%, rgba(0, 94, 255, 0.2) 100%);
+  border-radius: 12px;
+}
+
+.cardIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.cardTitle {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.cardText {
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.featureItem {
+  text-align: center;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: rgba(95, 14, 255, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.featureItem:hover {
+  transform: scale(1.05);
+}
+
+.featureIcon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.featureItem h3 {
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.featureItem p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.teamDescription {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  color: var(--text-secondary);
+}
+
+.teamStats {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.statItem {
+  text-align: center;
+}
+
+.statNumber {
+  font-size: 2.5rem;
+  font-weight: bold;
+  background: linear-gradient(90deg, var(--link-color), var(--btn-gradient));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.statLabel {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.valuesList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.valueItem {
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: rgba(95, 14, 255, 0.05);
+  border-left: 4px solid var(--link-color);
+}
+
+.valueItem h3 {
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+}
+
+.valueItem p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .missionCard {
+    flex-direction: column;
+  }
+  
+  .cardImage {
+    width: 100%;
+    min-height: 200px;
+  }
+  
+  .sectionTitle {
+    font-size: 2rem;
+  }
+}

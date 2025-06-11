@@ -1,0 +1,299 @@
+/* Общие стили для модальных окон */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+/* Стили для основного модального окна */
+.modalContent {
+  border-radius: 12px;
+  padding: 30px;
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modalContentLight {
+  background: white;
+  color: #333;
+}
+
+.modalContentDark {
+  background: #2d2d2d;
+  color: #f0f0f0;
+}
+
+.modalClose {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 5px;
+  line-height: 1;
+}
+
+.modalContentLight .modalClose {
+  color: #666;
+}
+
+.modalContentDark .modalClose {
+  color: #ccc;
+}
+
+.modalClose:hover {
+  opacity: 0.7;
+}
+
+.modalTitle {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 25px;
+  text-align: left;
+}
+
+.modalContentLight .modalTitle {
+  color: #333;
+}
+
+.modalContentDark .modalTitle {
+  color: #f0f0f0;
+}
+
+/* Стили для формы */
+.callbackForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.formGroup {
+  position: relative;
+}
+
+.formGroup label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.modalContentLight .formGroup label {
+  color: #333;
+}
+
+.modalContentDark .formGroup label {
+  color: #f0f0f0;
+}
+
+.formInput {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.modalContentLight .formInput {
+  background: white;
+  color: #333;
+  border-color: #e1e5e9;
+}
+
+.modalContentDark .formInput {
+  background: #1a1a1a;
+  color: #f0f0f0;
+  border-color: #444;
+}
+
+.formInput:focus {
+  outline: none;
+  border-color: #3498db;
+}
+
+.formInput::placeholder {
+  opacity: 0.6;
+}
+
+.modalContentLight .formInput::placeholder {
+  color: #999;
+}
+
+.modalContentDark .formInput::placeholder {
+  color: #888;
+}
+
+.requiredStar {
+  color: #e74c3c;
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  margin-top: 16px;
+}
+
+/* Стили для чекбокса */
+.checkboxGroup {
+  margin: 10px 0;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.checkboxLabel input[type="checkbox"] {
+  margin: 0;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+.checkboxText {
+  opacity: 0.8;
+}
+
+.modalContentLight .checkboxText {
+  color: #666;
+}
+
+.modalContentDark .checkboxText {
+  color: #ccc;
+}
+
+.policyLink {
+  color: #3498db;
+  text-decoration: none;
+}
+
+.policyLink:hover {
+  text-decoration: underline;
+}
+
+/* Стили для кнопки отправки */
+.submitBtn {
+  background: linear-gradient(90deg, var(--link-color), var(--btn-gradient));
+  color: white;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.submitBtn:hover:not(:disabled) {
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+}
+
+.submitBtn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Стили для модального окна благодарности */
+.thankYouModal {
+  border-radius: 12px;
+  padding: 40px 30px;
+  max-width: 400px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.thankYouModalLight {
+  background: white;
+  color: #333;
+}
+
+.thankYouModalDark {
+  background: #2d2d2d;
+  color: #f0f0f0;
+}
+
+.thankYouModalLight .modalClose {
+  color: #666;
+}
+
+.thankYouModalDark .modalClose {
+  color: #ccc;
+}
+
+.successIcon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #2ecc71;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: bold;
+  margin: 0 auto 20px;
+}
+
+.thankYouContent h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.thankYouContent p {
+  font-size: 16px;
+  margin-bottom: 25px;
+  opacity: 0.8;
+}
+
+.okBtn {
+  background: linear-gradient(90deg, var(--link-color), var(--btn-gradient));
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.okBtn:hover {
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+}
+
+/* Адаптивные стили */
+@media (max-width: 600px) {
+  .modalContent {
+    padding: 20px;
+    margin: 10px;
+  }
+  
+  .modalTitle {
+    font-size: 20px;
+  }
+}

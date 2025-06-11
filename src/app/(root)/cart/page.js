@@ -38,6 +38,8 @@ export default function CartPage() {
                   src={item.image} 
                   alt={item.name} 
                   className={styles.itemImage}
+                  width={12}
+                  height={12}
                 />
                 <div className={styles.itemDetails}>
                   <h3>{item.name}</h3>
