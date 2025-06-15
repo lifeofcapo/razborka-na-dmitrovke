@@ -8,6 +8,7 @@ import { FaCartArrowDown } from "react-icons/fa";
 import { CiUser } from "react-icons/ci";
 import CallbackModal from '@/components/modals/CallbackModal';
 import SmallThemeLogo from '../elements/SmallThemeLogo';
+import { useAuth } from '@/context/AuthContext';
 
 
 export default function Header() {
@@ -16,6 +17,8 @@ export default function Header() {
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+
+  const { user } = useAuth();
   return (
     <header className="header">
       <div className="header-container">
@@ -66,9 +69,10 @@ export default function Header() {
               </button>
             </Link>
           </div>
-          <Link href="/account" passHref>
+          <Link href={user ? "/account" : "/login"} passHref>
             <button className="cart-btn">
               <CiUser size={24}/>
+              {user && <span className="user-indicator"></span>}
             </button>
           </Link>
         </div>    

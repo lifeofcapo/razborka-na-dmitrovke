@@ -117,9 +117,8 @@
 .priceFilter {
   display: flex;
   gap: 0.5rem;
-  width: 100%; /* Занимает всю ширину сайдбара */
+  width: 100%; 
 }
-
 
 .priceInput {
   flex: 1;
@@ -130,7 +129,7 @@
   background-color: var(--bg-color);
   color: var(--text-color);
   -moz-appearance: textfield;
-  box-sizing: border-box; /* Важно: учитываем border в общей ширине */
+  box-sizing: border-box; 
   width: 50%;
 }
 

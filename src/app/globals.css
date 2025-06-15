@@ -220,8 +220,6 @@ a {
 
 
 }
-
-
 .callbackBtn {
   background: linear-gradient(90deg, var(--link-color), var(--btn-gradient));
   color: white;

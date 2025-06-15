@@ -1,6 +1,6 @@
 'use client';
 import styles from './Catalog.module.css';
-import CartButton from './components/CartButton';
+import CartButton from './_components/CartButton';
 import { useState } from 'react';
 import { FaSearch, FaCar, FaChevronDown, FaChevronUp, FaTimes } from 'react-icons/fa';
 import { BsVinylFill } from 'react-icons/bs';
@@ -70,9 +70,7 @@ export default function Catalog() {
         </div>
 
         <div className={styles.catalogContent}>
-          {/* Боковая панель с фильтрами */}
           <aside className={styles.catalogSidebar}>
-            {/* Поиск по артикулу */}
             <div className={styles.filterSection}>
               <h3>Поиск по артикулу</h3>
               <div className={styles.searchBox}>
@@ -89,7 +87,7 @@ export default function Catalog() {
               </div>
             </div>
 
-            {/* Поиск по VIN */}
+
             <div className={styles.filterSection}>
               <h3>Поиск по VIN</h3>
               <div className={styles.searchBox}>
@@ -106,7 +104,6 @@ export default function Catalog() {
               </div>
             </div>
 
-            {/* Поиск по автомобилю */}
             <div className={styles.filterSection}>
               <h3>Поиск по автомобилю</h3>
               <div className={styles.carSearch}>
@@ -246,7 +243,6 @@ export default function Catalog() {
               </div>
             </div>
 
-            {/* Фильтр по категориям */}
             <div className={styles.filterSection}>
               <h3>Категории</h3>
               <div className={styles.categoryFilters}>

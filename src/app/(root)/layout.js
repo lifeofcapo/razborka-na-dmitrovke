@@ -4,6 +4,7 @@ import Header from '@/components/modals/Header';
 import Footer from '@/components/modals/Footer';
 import { CartProvider } from '@/context/CartContext';
 import { ThemeProvider } from '@/context/ThemeContext';
+import { AuthProvider } from '@/context/AuthContext';
 
 export const metadata = {
   title: "Авторазборка На Дмитровке",
@@ -15,15 +16,17 @@ export default function RootLayout({ children }) {
     <html lang="ru" className={montserrat.variable}>
       <body>
         <ThemeProvider> 
-          <CartProvider>
-            <div className="app-wrapper">
-              <Header />
-              <main className="main-content">
-                {children}
-              </main>
-              <Footer />
-            </div>
-          </CartProvider>
+          <AuthProvider>
+            <CartProvider>
+              <div className="app-wrapper">
+                <Header />
+                <main className="main-content">
+                  {children}
+                </main>
+                <Footer />
+              </div>
+            </CartProvider>
+          </AuthProvider>
         </ThemeProvider>
       </body>
     </html>

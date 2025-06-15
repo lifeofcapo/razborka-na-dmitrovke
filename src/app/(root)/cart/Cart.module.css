@@ -45,12 +45,25 @@
   gap: 1rem;
 }
 
-.quantityInput {
-  width: 60px;
-  padding: 0.5rem;
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
+.priceFilter {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%; 
 }
+
+.quantityInput {
+  flex: 1;
+  padding: 0.8rem;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  -moz-appearance: textfield;
+  box-sizing: border-box; 
+  width: 50%;
+}
+
 
 .removeBtn {
   background: none;
