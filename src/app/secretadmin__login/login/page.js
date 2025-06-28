@@ -1,16 +1,8 @@
 'use client'
 import { useAdminAuth } from '@/context/AdminAuthContext'
-import { useEffect } from 'react'
-import { useRouter } from 'next/navigation'
 
 export default function AdminLogin() {
   const { admin, loading, login } = useAdminAuth()
-  const router = useRouter()
-
-  useEffect(() => {
-    if (admin) router.push('/secretadmin__login/dashboard')
-  }, [admin])
-
   const handleSubmit = async (e) => {
     e.preventDefault()
     const formData = new FormData(e.target)

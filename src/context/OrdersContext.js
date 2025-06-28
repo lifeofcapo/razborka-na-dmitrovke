@@ -1,9 +1,9 @@
 'use client'
 import { useState } from "react";
 
-const [orders, setOrders] = useState([]);
-
 export const createOrder = (orderData) => {
+  const [orders, setOrders] = useState([]);
+  
   const newOrder = {
     ...orderData,
     id: `#${Math.floor(Math.random() * 100000)}`,
