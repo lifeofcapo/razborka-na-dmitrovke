@@ -25,8 +25,6 @@ export default function AboutContent() {
               <div className={styles.imagePlaceholder}></div>
             </div>
           </section>
-
-          {/* Блок с преимуществами */}
           <section className={`${styles.aboutCard} ${styles.featuresCard}`}>
             <h2 className={styles.sectionTitle}>Почему выбирают нас</h2>
             <div className={styles.featuresGrid}>
@@ -52,8 +50,6 @@ export default function AboutContent() {
               </div>
             </div>
           </section>
-
-          {/* Блок с командой */}
           <section className={`${styles.aboutCard} ${styles.teamCard}`}>
             <h2 className={styles.sectionTitle}>Наша команда</h2>
             <p className={styles.teamDescription}>
@@ -76,8 +72,6 @@ export default function AboutContent() {
               </div>
             </div>
           </section>
-
-          {/* Блок с ценностями */}
           <section className={`${styles.aboutCard} ${styles.valuesCard}`}>
             <h2 className={styles.sectionTitle}>Наши ценности</h2>
             <div className={styles.valuesList}>

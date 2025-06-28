@@ -20,7 +20,6 @@ export default function RootLayout({ children }) {
         <link rel="icon" type="image/png" sizes="32x32" href="/icons-light/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/icons-light/favicon-16x16.png" />
         <link rel="manifest" href="/icons-light/site.webmanifest" />
-        <Favicon />
       </head>
       <body>
         <ThemeProvider> 
@@ -29,6 +28,7 @@ export default function RootLayout({ children }) {
               <div className="app-wrapper">
                 <Header />
                 <main className="main-content">
+                  <Favicon />
                   {children}
                 </main>
                 <Footer />
