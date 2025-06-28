@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import styles from './Dashboard.module.css';
-import SearchForm from '@/components/DashboardSearchForm';
+import SearchForm from '@/components/modals/DashboardSearchForm';
 import ImageComponent from '@/components/elements/ImageComponent';
 import { carBrands } from './data/CarParts';
 

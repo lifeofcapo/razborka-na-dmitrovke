@@ -8,6 +8,7 @@ import {
   FiShoppingCart, 
   FiLogOut 
 } from 'react-icons/fi';
+import styles from  "./Sidebar.module.css";
 
 const menuItems = [
   { path: '/account', title: 'Профиль', icon: <FiUser size={18} /> },
@@ -20,20 +21,20 @@ export default function Sidebar() {
   const { logout } = useAuth();
 
   return (
-    <aside className="sidebar">
-      <div className="sidebar-header">
+    <aside className={styles.sideBar}>
+      <div className={styles.sidebarHeader}>
         <h2>Личный кабинет</h2>
       </div>
       
-      <nav className="sidebar-nav">
+      <nav className={styles.sidebarNav}>
         <ul>
           {menuItems.map((item) => (
             <li key={item.path}>
               <Link 
                 href={item.path}
-                className={`sidebar-link ${pathname === item.path ? 'active' : ''}`}
+                className={`${styles.sidebarLink} ${pathname === item.path ? 'active' : ''}`}
               >
-                <span className="sidebar-icon">{item.icon}</span>
+                <span className={styles.sidebarIcon}>{item.icon}</span>
                 {item.title}
               </Link>
             </li>
@@ -41,9 +42,9 @@ export default function Sidebar() {
         </ul>
       </nav>
       
-      <div className="sidebar-footer">
-        <button onClick={logout} className="logout-btn">
-          <span className="sidebar-icon"><FiLogOut size={18} /></span>
+      <div className={styles.sidebarFooter}>
+        <button onClick={logout} className={styles.logoutBtn}>
+          <span className={styles.sidebarIcon}><FiLogOut size={18} /></span>
           Выйти
         </button>
       </div>

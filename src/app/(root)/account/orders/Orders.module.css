@@ -1,0 +1,126 @@
+.ordersPage {
+  padding: 2rem;
+}
+
+.tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1rem;
+}
+
+.tabs button {
+  background: none;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-weight: 500;
+  position: relative;
+}
+
+.tabs button.activeTab {
+  color: var(--link-color);
+}
+
+.tabs button.activeTab::after {
+  content: '';
+  position: absolute;
+  bottom: -1.1rem;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--link-color);
+}
+
+.balanceInfo {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+  background: var(--cart-summary-bg);
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.balanceInfo div {
+  display: flex;
+  flex-direction: column;
+}
+
+.balanceInfo span {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.balanceInfo strong {
+  font-size: 1.2rem;
+}
+
+.ordersTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.ordersTable th, 
+.ordersTable td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.ordersTable th {
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.status {
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.status.вобработке {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.status.доставлен {
+  background: #d4edda;
+  color: #155724;
+}
+
+.detailsLink {
+  color: var(--link-color);
+  margin-right: 1rem;
+}
+
+.contactBtn {
+  background: none;
+  border: none;
+  color: var(--link-color);
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.emptyOrders {
+  text-align: center;
+  padding: 3rem 0;
+}
+
+.continueShopping {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background: var(--link-color);
+  color: white;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.continueShopping:hover {
+  opacity: 0.9;
+}

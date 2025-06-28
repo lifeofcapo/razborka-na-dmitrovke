@@ -1,0 +1,73 @@
+.sideBar {
+  border-radius: 12px;
+  padding: 1.5rem;
+  height: fit-content;
+  position: sticky;
+  top: 100px;
+  width: 250px;
+  flex-shrink: 0;
+}
+
+.sidebarHeader {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 1rem;
+}
+
+.sidebarHeader h2 {
+  font-size: 1.25rem;
+  color: var(--text-color);
+}
+
+.sidebarNav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebarLink {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.sidebarLink:hover,
+.sidebarLink.active {
+  background: rgba(0, 94, 255, 0.1);
+  color: var(--link-color);
+}
+
+.sidebarIcon {
+  margin-right: 0.75rem;
+  font-size: 1.1rem;
+}
+
+.sidebarFooter {
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+  margin-top: 1rem;
+}
+
+.logoutBtn {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: medium;
+}
+
+.logoutBtn:hover {
+  background: rgba(231, 76, 60, 0.1);
+  color: #e74c3c;
+}

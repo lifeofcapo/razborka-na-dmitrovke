@@ -8,7 +8,7 @@ export default function AdminLogin() {
   const router = useRouter()
 
   useEffect(() => {
-    if (admin) router.push('/5adm0inlog1n0sec6ret/dashboard')
+    if (admin) router.push('/secretadmin__login/dashboard')
   }, [admin])
 
   const handleSubmit = async (e) => {

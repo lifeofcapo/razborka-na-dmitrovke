@@ -48,7 +48,6 @@ export default function LoginPage() {
     setIsLoading(true);
     
     try {
-      // Имитация запроса к API
       await new Promise(resolve => setTimeout(resolve, 1000));
       
       const userData = {
@@ -152,7 +151,7 @@ export default function LoginPage() {
                 name="address"
                 value={formData.address}
                 onChange={(e) => setFormData({...formData, address: e.target.value})}
-                placeholder="Город, улица, дом, квартира"
+                placeholder="Город, улица, дом"
                 rows="3"
               />
             </div>
@@ -172,12 +171,6 @@ export default function LoginPage() {
             'Зарегистрироваться'
           )}
         </button>
-
-        {isLogin && (
-          <div className="auth-links">
-            <Link href="/forgot-password">Забыли пароль?</Link>
-          </div>
-        )}
       </form>
     </div>
   );

@@ -1,0 +1,122 @@
+.orderDetails {
+  padding: 2rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.status {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+.status.вобработке {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.status.доставлен {
+  background: #d4edda;
+  color: #155724;
+}
+
+.orderInfo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.infoBlock {
+  background: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.infoBlock h3 {
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.infoBlock p {
+  margin: 0.5rem 0;
+}
+
+.itemsList {
+  margin-top: 2rem;
+}
+
+.itemsTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.itemsTable th, 
+.itemsTable td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.itemsTable th {
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.productInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.productImage {
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.productLink {
+  color: var(--link-color);
+  transition: color 0.3s ease;
+}
+
+.productLink:hover {
+  text-decoration: underline;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.backLink {
+  color: var(--link-color);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.contactBtn {
+  background: linear-gradient(90deg, var(--link-color), var(--btn-gradient));
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.contactBtn:hover {
+  opacity: 0.9;
+}

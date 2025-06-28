@@ -1,8 +1,12 @@
 'use client';
+import { useState } from 'react';
 import { useCart } from '@/context/CartContext';
+import { useAuth } from '@/context/AuthContext';
 import Link from 'next/link';
 import styles from './Cart.module.css';
 import Image from 'next/image';
+import CheckoutModal from './_components/CheckoutModal';
+import { redirect } from 'next/navigation';
 
 export default function CartPage() {
   const { 
@@ -13,13 +17,23 @@ export default function CartPage() {
     totalPrice,
     clearCart 
   } = useCart();
+  
+  const { user } = useAuth();
+  const [isCheckoutModalOpen, setIsCheckoutModalOpen] = useState(false);
 
   const handleQuantityChange = (productId, e) => {
     updateQuantity(productId, parseInt(e.target.value));
   };
 
+  const handleCheckoutClick = () => {
+    if (!user) {
+      redirect('/login?redirect=/cart');
+    }
+    setIsCheckoutModalOpen(true);
+  };
+
   return (
-    <div className= {styles.cartPage}>
+    <div className={styles.cartPage}>
       <h1>Ваша корзина</h1>
       
       {totalItems === 0 ? (
@@ -38,8 +52,8 @@ export default function CartPage() {
                   src={item.image} 
                   alt={item.name} 
                   className={styles.itemImage}
-                  width={12}
-                  height={12}
+                  width={100}
+                  height={100}
                 />
                 <div className={styles.itemDetails}>
                   <h3>{item.name}</h3>
@@ -80,13 +94,21 @@ export default function CartPage() {
               <button onClick={clearCart} className={styles.clearCart}>
                 Очистить корзину
               </button>
-              <Link href="/checkout" className={styles.checkoutBtn}>
+              <button 
+                onClick={handleCheckoutClick}
+                className={styles.checkoutBtn}
+              >
                 Оформить заказ
-              </Link>
+              </button>
             </div>
           </div>
         </>
       )}
+      
+      <CheckoutModal 
+        isOpen={isCheckoutModalOpen}
+        onClose={() => setIsCheckoutModalOpen(false)}
+      />
     </div>
   );
 }

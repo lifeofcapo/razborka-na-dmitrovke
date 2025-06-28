@@ -28,8 +28,6 @@ export default function OplataPage() {
                             <div className={`${styles.faqContent} ${activeIndex === 0 ? styles.active : ''}`}>
                                 <h3>Для оплаты</h3>
                                 <p>Отсканируйте QR-код в мобильном приложении банка или штатной камерой телефона</p>
-                                
-                                {/* Добавленное изображение QR-кода */}
                                 <div className={styles.qrCodeContainer}>
                                     <ImageComponent 
                                         src="/images/qr-code.png" 
