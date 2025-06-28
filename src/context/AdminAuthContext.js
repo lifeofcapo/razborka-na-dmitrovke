@@ -10,24 +10,24 @@ export function AdminAuthProvider({ children }) {
   const router = useRouter()
 
   useEffect(() => {
-    checkAuth()
-  }, [])
-
-  const checkAuth = async () => {
-    try {
-      const res = await fetch('/api/5adm0inlog1n0sec6ret/auth')
-      const data = await res.json()
-      if (data.admin) {
-        setAdmin(data.admin)
-      } else {
+    const checkAuth = async () => {
+      try {
+        const res = await fetch('/api/5adm0inlog1n0sec6ret/auth')
+        const data = await res.json()
+        if (data.admin) {
+          setAdmin(data.admin)
+        } else {
+          router.push('/5adm0inlog1n0sec6ret/login')
+        }
+      } catch (error) {
         router.push('/5adm0inlog1n0sec6ret/login')
+      } finally {
+        setLoading(false)
       }
-    } catch (error) {
-      router.push('/5adm0inlog1n0sec6ret/login')
-    } finally {
-      setLoading(false)
     }
-  }
+
+    checkAuth()
+  },)
 
   const login = async (credentials) => {
     const res = await fetch('/api/5adm0inlog1n0sec6ret/login', {
