@@ -7,12 +7,12 @@ import Head from "next/head";
 export default function Favicon() {
     const {theme} = useTheme();
     return (
-        <Head>
-            <link
-            rel="icon"
-            href={theme === 'dark' ? '/dark-favicon.ico' : '/light-favicon.ico'}
-            key="theme-favicon"
-            />
-        </Head>
+    <Head>
+      <link 
+        rel="icon" 
+        href={theme === 'dark' ? '/icons-dark/favicon.ico' : '/icons-light/favicon.ico'}
+        key="theme-favicon"
+      />
+    </Head>
     )
 }
