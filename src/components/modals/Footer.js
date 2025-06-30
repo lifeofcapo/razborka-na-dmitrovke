@@ -77,7 +77,7 @@ export default function Footer() {
             <Link href="/terms">Условия использования</Link>
           </div>
           <div className={styles.developerCredit}>
-            <p>Cайт разработан <a href="https://github.com/cashdrug" target="_blank" rel="noopener noreferrer">by web-developer</a></p>
+            <p>Cайт разработан <a href="https://github.com/lifeofcapo" target="_blank" rel="noopener noreferrer">by web-developer</a></p>
           </div>
         </div>
       </div>

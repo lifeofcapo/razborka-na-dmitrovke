@@ -10,7 +10,7 @@ export default function Favicon() {
     <Head>
       <link 
         rel="icon" 
-        href={theme === 'dark' ? '/icons-dark/favicon.ico' : '/icons-light/favicon.ico'}
+        href={theme === 'dark' ? '/images/icons-light/favicon.ico' : '/images/icons-dark/favicon.ico'}
         key="theme-favicon"
       />
     </Head>
