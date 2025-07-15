@@ -1,5 +1,5 @@
 import prisma from "@/lib/prisma";
-import { comparePasswords } from "@/util/password";
+import { comparePasswords } from "@/util/hashpassword";
 
 export default async function POST(req, res) {
   if (req.method !== "POST") {
