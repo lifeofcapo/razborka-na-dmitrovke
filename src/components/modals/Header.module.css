@@ -1,0 +1,105 @@
+/* Header стили */
+.header {
+  background: var(--header-bg);
+  box-shadow: 0 2px 10px var(--shadow-color);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: background-color 0.3s ease;
+}
+
+.headerContainer {
+  max-width: 1360px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  max-height: 80px;
+}
+
+.headerNav .navMenu {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navLink {
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.navLink:hover {
+  color: var(--text-light);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.headerContacts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.headerContacts p {
+  margin: 0;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.cartBtn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.cartBtn:hover {
+  color: var(--text-light);
+  background: rgba(255, 255, 255, 0.1);
+}
+.cartCount {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: var(--accent-color);
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+}
+
+.cartSummary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--cart-summary-bg);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  color: var(--cart-summary-text);
+  font-weight: 500;
+  margin-right: 0.5rem;
+}
+
+.cartSummary span {
+  white-space: nowrap;
+}

@@ -44,7 +44,8 @@
 }
 
 body {
-  font-family: var(--font-montserrat), -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-montserrat), -apple-system, BlinkMacSystemFont,
+    sans-serif;
   line-height: 1.6;
   color: var(--text-color);
   background-color: var(--bg-color);
@@ -67,115 +68,9 @@ body {
   padding: 0 1rem;
 }
 
-/* Header стили */
-.header {
-  background: var(--header-bg);
-  box-shadow: 0 2px 10px var(--shadow-color);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  transition: background-color 0.3s ease;
-}
-
-.header-container {
-  max-width: 1360px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem;
-  max-height: 80px;
-}
-
 a {
   text-decoration: none;
   color: inherit;
-}
-
-.header-nav .nav-menu {
-  display: flex;
-  list-style: none;
-  gap: 2rem;
-  margin: 0;
-  padding: 0;
-}
-
-.nav-link {
-  color: var(--text-secondary);
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  transition: all 0.2s ease;
-}
-
-.nav-link:hover {
-  color: var(--text-light);
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.header-contacts {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-}
-
-.header-contacts p {
-  margin: 0;
-  font-weight: bold; /* Делаем номер телефона жирным */
-  color: var(--text-color);
-}
-
-.header-actions {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.cart-btn {
-  background: transparent;
-  border: none;
-  color: var(--text-secondary);
-  cursor: pointer;
-  padding: 0.5rem;
-  border-radius: 4px;
-  transition: all 0.2s ease;
-  position: relative;
-}
-
-.cart-btn:hover {
-  color: var(--text-light);
-  background: rgba(255, 255, 255, 0.1);
-}
-.cart-count {
-  position: absolute;
-  top: -5px;
-  right: -5px;
-  background: var(--accent-color);
-  color: white;
-  border-radius: 50%;
-  width: 18px;
-  height: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.7rem;
-}
-
-.cart-summary {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: var(--cart-summary-bg);
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  color: var(--cart-summary-text);
-  font-weight: 500;
-  margin-right: 0.5rem;
-}
-
-.cart-summary span {
-  white-space: nowrap;
 }
 
 .read-more {
@@ -191,7 +86,7 @@ a {
 .logo-container {
   position: relative;
   width: 80px;
-  height: 65px; 
+  height: 65px;
   transition: opacity 0.3s ease;
   margin-left: 10px;
 }
@@ -214,11 +109,9 @@ a {
 .footer-logo-container {
   position: relative;
   width: 150px;
-  height: 150px; 
+  height: 150px;
   transition: opacity 0.3s ease;
   margin-left: 10px;
-
-
 }
 .callbackBtn {
   background: linear-gradient(90deg, var(--link-color), var(--btn-gradient));
@@ -242,8 +135,13 @@ a {
 }
 
 /* Плавные переходы для всех элементов */
-a, button, input, .nav-link, .footer-links a {
-  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+a,
+button,
+input,
+.nav-link,
+.footer-links a {
+  transition: color 0.3s ease, background-color 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .not-found-container {

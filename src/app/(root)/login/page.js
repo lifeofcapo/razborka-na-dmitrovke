@@ -1,18 +1,17 @@
-'use client';
-import { useState } from 'react';
-import { useAuth } from '@/context/AuthContext';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
-import '@/app/(root)/account/account.css';
+"use client";
+import { useState } from "react";
+import { useAuth } from "@/context/AuthContext";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import "@/app/(root)/account/account.css";
 
 export default function LoginPage() {
   const [isLogin, setIsLogin] = useState(true);
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-    name: '',
-    phone: '',
-    address: ''
+    email: "",
+    password: "",
+    name: "",
+    phone: "",
   });
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
@@ -21,22 +20,22 @@ export default function LoginPage() {
 
   const validate = () => {
     const newErrors = {};
-    
-    if (!formData.email) newErrors.email = 'Email обязателен';
+
+    if (!formData.email) newErrors.email = "Email обязателен";
     else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Неверный формат email';
+      newErrors.email = "Неверный формат email";
     }
-    
-    if (!formData.password) newErrors.password = 'Пароль обязателен';
+
+    if (!formData.password) newErrors.password = "Пароль обязателен";
     else if (formData.password.length < 6) {
-      newErrors.password = 'Пароль должен быть не менее 6 символов';
+      newErrors.password = "Пароль должен быть не менее 6 символов";
     }
-    
+
     if (!isLogin) {
-      if (!formData.name) newErrors.name = 'ФИО обязательно';
-      if (!formData.phone) newErrors.phone = 'Телефон обязателен';
+      if (!formData.name) newErrors.name = "ФИО обязательно";
+      if (!formData.phone) newErrors.phone = "Телефон обязателен";
     }
-    
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -44,23 +43,27 @@ export default function LoginPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validate()) return;
-    
+
     setIsLoading(true);
-    
+
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      const userData = {
-        name: isLogin ? 'Иван Иванов' : formData.name,
-        email: formData.email,
-        phone: formData.phone || '+7 900 111 22 33',
-        address: formData.address || 'Москва, ул. Дмитровка, д. 10'
-      };
-      
+      const endpoint = isLogin ? "/api/login" : "/api/register";
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Request failed");
+      }
+
+      const userData = await response.json();
       login(userData);
-      router.push('/account');
+      router.push("/account");
     } catch (error) {
-      setErrors({ form: 'Ошибка авторизации. Проверьте данные.' });
+      setErrors({ form: error.message || "Ошибка авторизации" });
     } finally {
       setIsLoading(false);
     }
@@ -69,14 +72,11 @@ export default function LoginPage() {
   return (
     <div className="auth-container">
       <div className="auth-header">
-        <h1>{isLogin ? 'Вход в аккаунт' : 'Регистрация'}</h1>
+        <h1>{isLogin ? "Вход в аккаунт" : "Регистрация"}</h1>
         <p>
-          {isLogin ? 'Нет аккаунта?' : 'Уже есть аккаунт?'}
-          <button 
-            onClick={() => setIsLogin(!isLogin)}
-            className="auth-toggle"
-          >
-            {isLogin ? 'Зарегистрироваться' : 'Войти'}
+          {isLogin ? "Нет аккаунта?" : "Уже есть аккаунт?"}
+          <button onClick={() => setIsLogin(!isLogin)} className="auth-toggle">
+            {isLogin ? "Зарегистрироваться" : "Войти"}
           </button>
         </p>
       </div>
@@ -92,9 +92,11 @@ export default function LoginPage() {
               type="text"
               name="name"
               value={formData.name}
-              onChange={(e) => setFormData({...formData, name: e.target.value})}
+              onChange={(e) =>
+                setFormData({ ...formData, name: e.target.value })
+              }
               placeholder="Иванов Иван Иванович"
-              className={errors.name ? 'error' : ''}
+              className={errors.name ? "error" : ""}
             />
             {errors.name && <span className="error-text">{errors.name}</span>}
           </div>
@@ -107,9 +109,11 @@ export default function LoginPage() {
             type="email"
             name="email"
             value={formData.email}
-            onChange={(e) => setFormData({...formData, email: e.target.value})}
+            onChange={(e) =>
+              setFormData({ ...formData, email: e.target.value })
+            }
             placeholder="email@example.com"
-            className={errors.email ? 'error' : ''}
+            className={errors.email ? "error" : ""}
           />
           {errors.email && <span className="error-text">{errors.email}</span>}
         </div>
@@ -121,11 +125,15 @@ export default function LoginPage() {
             type="password"
             name="password"
             value={formData.password}
-            onChange={(e) => setFormData({...formData, password: e.target.value})}
+            onChange={(e) =>
+              setFormData({ ...formData, password: e.target.value })
+            }
             placeholder="••••••••"
-            className={errors.password ? 'error' : ''}
+            className={errors.password ? "error" : ""}
           />
-          {errors.password && <span className="error-text">{errors.password}</span>}
+          {errors.password && (
+            <span className="error-text">{errors.password}</span>
+          )}
         </div>
 
         {!isLogin && (
@@ -137,38 +145,26 @@ export default function LoginPage() {
                 type="tel"
                 name="phone"
                 value={formData.phone}
-                onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                onChange={(e) =>
+                  setFormData({ ...formData, phone: e.target.value })
+                }
                 placeholder="+7 900 000 00 00"
-                className={errors.phone ? 'error' : ''}
+                className={errors.phone ? "error" : ""}
               />
-              {errors.phone && <span className="error-text">{errors.phone}</span>}
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="address">Адрес</label>
-              <textarea
-                id="address"
-                name="address"
-                value={formData.address}
-                onChange={(e) => setFormData({...formData, address: e.target.value})}
-                placeholder="Город, улица, дом"
-                rows="3"
-              />
+              {errors.phone && (
+                <span className="error-text">{errors.phone}</span>
+              )}
             </div>
           </>
         )}
 
-        <button 
-          type="submit" 
-          className="auth-submit"
-          disabled={isLoading}
-        >
+        <button type="submit" className="auth-submit" disabled={isLoading}>
           {isLoading ? (
             <span className="spinner"></span>
           ) : isLogin ? (
-            'Войти'
+            "Войти"
           ) : (
-            'Зарегистрироваться'
+            "Зарегистрироваться"
           )}
         </button>
       </form>

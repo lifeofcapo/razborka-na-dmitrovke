@@ -1,14 +1,18 @@
 'use client';
 import styles from './Catalog.module.css';
 import CartButton from './_components/CartButton';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FaSearch, FaCar, FaChevronDown, FaChevronUp, FaTimes } from 'react-icons/fa';
 import { BsVinylFill } from 'react-icons/bs';
-import { products , categories } from '@/app/(root)/data/Products';
 import { bodyTypes, transmissions, fuelTypes, engineVolumes } from '@/app/(root)/data/Filters';
 import { carBrands, carGenerations, carModels, carParts } from '@/app/(root)/data/CarParts';
 
 export default function Catalog() {
+
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
   const [searchQuery, setSearchQuery] = useState('');
   const [vinQuery, setVinQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -25,28 +29,43 @@ export default function Catalog() {
   const [bodyType, setBodyType] = useState('');
   const [transmission, setTransmission] = useState('');
 
+  useEffect(() => {
+    async function fetchProducts() {
+      try {
+        const res = await fetch('/api/product');
+        if (!res.ok) throw new Error('Ошибка при загрузке товаров');
+        const data = await res.json();
+        setProducts(data);
+      } catch (err) {
+        console.error(err);
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchProducts();
+  }, []);
+
   const filteredProducts = products.filter(product => {
-    // Фильтрация по поиску (артикул или название)
     const matchesSearch = searchQuery 
-      ? product.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-        product.partNumber.toLowerCase().includes(searchQuery.toLowerCase())
+      ? product.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+        product.partNumber?.toLowerCase().includes(searchQuery.toLowerCase())
       : true;
-    
-    // Фильтрация по VIN (если введен)
+
     const matchesVin = vinQuery 
-      ? product.partNumber.toLowerCase().includes(vinQuery.toLowerCase())
+      ? product.partNumber?.toLowerCase().includes(vinQuery.toLowerCase())
       : true;
-    
-    // Фильтрация по автомобилю (если выбраны параметры)
+
     const matchesCar = selectedBrand 
-      ? product.brand === selectedBrand &&
-        (!selectedPart || product.name.includes(selectedPart))
+      ? product.carBrand?.name === selectedBrand &&
+        (!selectedPart || product.title.includes(selectedPart))
       : true;
-    
-    const matchesCategory = selectedCategory === 'all' || product.category === selectedCategory;
+
+    const matchesCategory = selectedCategory === 'all' || product.category?.id === selectedCategory;
     const matchesPrice = (!priceRange.min || product.price >= parseInt(priceRange.min)) &&
-                       (!priceRange.max || product.price <= parseInt(priceRange.max));
-    
+                         (!priceRange.max || product.price <= parseInt(priceRange.max));
+
     return matchesSearch && matchesVin && matchesCar && matchesCategory && matchesPrice;
   });
 
@@ -60,6 +79,9 @@ export default function Catalog() {
     setBodyType('');
     setTransmission('');
   };
+
+  if (loading) return <p>Загрузка товаров...</p>;
+  if (error) return <p>Ошибка: {error}</p>;
 
   return (
     <div className={styles.catalogPage}>

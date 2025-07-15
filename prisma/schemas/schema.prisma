@@ -16,6 +16,7 @@ model User {
   email     String   @unique
   password  String
   phone     String?
+  address   String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -67,18 +68,37 @@ model Testimonial {
   @@map("testimonials")
 }
 
-model Category {
-  id          Int      @id @default(autoincrement())
-  name        String   @unique
-  slug        String   @unique
+model PartCategory {
+  id        Int      @id @default(autoincrement())
+  slug      String   @unique
+  name      String
+  parentId  Int?     
+  parent    PartCategory? @relation("CategoryHierarchy", fields: [parentId], references: [id])
+  children  PartCategory[] @relation("CategoryHierarchy")
+  
+  parts     CarPart[]
+  products  Product[]
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@map("part_categories")
+}
+
+model CarPart {
+  id          Int          @id @default(autoincrement())
+  name        String
+  slug        String       @unique
   description String?
-  image       String?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  products Product[]
-
-  @@map("categories")
+  category    PartCategory @relation(fields: [categoryId], references: [id])
+  categoryId  Int
+  
+  products    Product[]
+  
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  
+  @@map("car_parts")
 }
 
 model CarBrand {
@@ -121,12 +141,65 @@ model CarGeneration {
   carModelId Int
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
-
   carModel CarModel  @relation(fields: [carModelId], references: [id], onDelete: Cascade)
   products Product[]
 
   @@unique([carModelId, slug])
   @@map("car_generations")
+}
+
+model EngineVolume {
+  id        Int      @id @default(autoincrement())
+  value     String   @unique
+  label     String   // Для отображения (например "1.6L")
+  
+  products  Product[]
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@map("engine_volumes")
+}
+
+model TransmissionType {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  slug      String   @unique
+  position  Int      @default(0) // Для сортировки в интерфейсе
+  
+  products  Product[]
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@map("transmission_types")
+}
+
+model FuelType {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  slug      String   @unique
+  
+  products  Product[]
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@map("fuel_types")
+}
+
+model BodyType {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  slug      String   @unique
+  group     String?  // Для группировки (например "Легковые", "Грузовые")
+  
+  products  Product[]
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@map("body_types")
 }
 
 model Product {
@@ -135,7 +208,9 @@ model Product {
   slug            String   @unique
   description     String?
   shortDescription String?
+
   partNumber      String?  @unique
+
   price           Decimal  @db.Decimal(10, 2)
   originalPrice   Decimal? @db.Decimal(10, 2)
   inStock         Boolean  @default(true)
@@ -144,30 +219,45 @@ model Product {
   weight          Float?
   dimensions      String?
   condition       ProductCondition @default(USED)
-  warranty        Int?     // warranty in months
-  categoryId      Int
-  carBrandId      Int?
-  carModelId      Int?
-  carGenerationId Int?
-  engineVolume    String?
-  fuelType        FuelType?
-  bodyType        BodyType?
+  warranty        Int? 
   yearFrom        Int?
   yearTo          Int?
   featured        Boolean  @default(false)
   createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
+  updatedAt       DateTime @updatedAt  
 
-  // Relations
-  category      Category       @relation(fields: [categoryId], references: [id])
+  partCategory   PartCategory?  @relation(fields: [categoryId], references: [id])
+  categoryId      Int
+
+  carPart        CarPart?          @relation(fields: [carPartId], references: [id])
+  carPartId      Int?
+
   carBrand      CarBrand?      @relation(fields: [carBrandId], references: [id])
+  carBrandId      Int?
+
   carModel      CarModel?      @relation(fields: [carModelId], references: [id])
+  carModelId      Int?
+
   carGeneration CarGeneration? @relation(fields: [carGenerationId], references: [id])
+  carGenerationId Int?
+
+  engineVolume   EngineVolume?     @relation(fields: [engineVolumeId], references: [id])
+  engineVolumeId Int?
+
+  fuelType       FuelType?         @relation(fields: [fuelTypeId], references: [id])
+  fuelTypeId     Int?
+
+  bodyType       BodyType?         @relation(fields: [bodyTypeId], references: [id])
+  bodyTypeId     Int?
+
+  transmission   TransmissionType? @relation(fields: [transmissionId], references: [id])
+  transmissionId Int?
+
+  // Relations     
   orderItems    OrderItem[]
 
   @@map("products")
 }
-
 
 model Order {
   id            String      @id @default(cuid())
@@ -206,37 +296,10 @@ model OrderItem {
   @@map("order_items")
 }
 
-// Enums
 enum ProductCondition {
   NEW
   USED
   REFURBISHED
-}
-
-enum FuelType {
-  PETROL
-  DIESEL
-  HYBRID
-  ELECTRIC
-  GAS
-}
-
-enum BodyType {
-  SEDAN
-  WAGON
-  HATCHBACK_5D
-  HATCHBACK_3D
-  COUPE
-  CONVERTIBLE
-  SUV
-  SUV_3D
-  SUV_5D
-  PICKUP
-  VAN
-  MINIVAN
-  MICROBUS
-  LIFTBACK
-  TRUCK
 }
 
 enum OrderStatus {
