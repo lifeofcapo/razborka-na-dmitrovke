@@ -1,12 +1,12 @@
 .heroContent {
   width: 100%;
-  text-align: center; 
-  margin-bottom: 3rem; 
+  text-align: center;
+  margin-bottom: 3rem;
 }
 
 .heroContainer {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   align-items: center;
   gap: 3rem;
 }
@@ -218,7 +218,7 @@
 }
 
 .benefitCard::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -226,7 +226,11 @@
   bottom: 0;
   border-radius: 24px;
   padding: 2px;
-  background: linear-gradient(135deg, rgba(255,255,255,0.3), rgba(255,255,255,0.1));
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.1)
+  );
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: exclude;
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -234,7 +238,7 @@
 }
 
 .benefitCard:hover {
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
 }
 
 .benefitCard:nth-child(1) {
@@ -281,7 +285,7 @@
 
 .benefitDescription {
   font-size: 0.95rem;
-  line-height: 1.6; 
+  line-height: 1.6;
   font-weight: 500;
   max-width: calc(100% - 210px);
 }
@@ -309,17 +313,16 @@
 
 .iconCheckmark {
   margin-right: 90px;
-transform: translateY(-80%);
+  transform: translateY(-80%);
 }
 
 .iconPrice {
   margin-right: 90px;
-transform: translateY(-65%)
+  transform: translateY(-65%);
 }
 
 .iconTool {
   margin-right: 40px;
-
 }
 
 /* Секция новостей */
@@ -332,10 +335,10 @@ transform: translateY(-65%)
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1.5rem;
-  overflow-x: auto; 
-  padding-bottom: 1rem; 
+  overflow-x: auto;
+  padding-bottom: 1rem;
   scrollbar-width: thin;
-  scrollbar-color: var(--border-color) transparent; 
+  scrollbar-color: var(--border-color) transparent;
 }
 
 .newsGrid::-webkit-scrollbar {
@@ -352,13 +355,13 @@ transform: translateY(-65%)
 }
 
 .newsCard {
-  min-width: 300px; 
+  min-width: 300px;
   background-color: var(--catalog-bg);
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 2px 10px var(--shadow-color);
   transition: box-shadow 0.3s ease;
-  flex-shrink: 0; 
+  flex-shrink: 0;
 }
 
 .newsCard:hover {
@@ -401,27 +404,27 @@ transform: translateY(-65%)
   .heroContainer {
     flex-direction: row;
   }
-  
+
   .heroContent {
     width: 50%;
   }
-  
+
   .heroImageContainer {
     width: 50%;
   }
-  
+
   .brandsGrid {
     grid-template-columns: repeat(3, 1fr);
   }
-  
+
   .categoriesGrid {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .newsGrid {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .benefitsGrid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -431,16 +434,16 @@ transform: translateY(-65%)
   .brandsGrid {
     grid-template-columns: repeat(6, 1fr);
   }
-  
+
   .categoriesGrid {
     grid-template-columns: repeat(4, 1fr);
   }
-  
+
   .newsGrid {
     grid-template-columns: repeat(3, 1fr);
   }
 
-    .categoriesGrid,
+  .categoriesGrid,
   .newsGrid {
     justify-content: center;
   }
@@ -454,33 +457,32 @@ transform: translateY(-65%)
     flex-direction: column;
     align-items: center;
   }
-  
+
   .categoryCard,
-  .newsCard
-  .benefitCard {
+  .newsCard .benefitCard {
     width: 100%;
     min-width: auto;
   }
 }
 
 @media (max-width: 768px) {
-  .brandsgrid  {
+  .brandsgrid {
     justify-content: center;
   }
-  
+
   .categoriesgrid {
     flex-direction: row;
     justify-content: center;
   }
-  
+
   .categoryCard {
     min-width: 200px;
   }
-  
+
   .newsCard {
     min-width: 250px;
   }
-    .carSelect {
+  .carSelect {
     padding: 10px 12px;
     font-size: 14px;
   }
@@ -490,7 +492,7 @@ transform: translateY(-65%)
   .categoriesGrid {
     grid-template-columns: 1fr;
   }
-  
+
   .verticalCard,
   .horizontalCard {
     grid-column: auto !important;

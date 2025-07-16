@@ -36,7 +36,7 @@ export default function AccountPage() {
             label="Email"
             value={user.email}
             type="email"
-            readOnly // Email shouldn't be editable in basic implementation
+            readOnly // Имейл не должен меняться после регистрации
           />
         </div>
         <div className="info-section">

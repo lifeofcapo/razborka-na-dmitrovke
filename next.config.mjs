@@ -1,9 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   turbopack: {},
+  experimental: {
+    serverActions: {}, // Empty object instead of boolean
+  },
   output: "standalone",
-  webpack: (config, { isServer }) => {
-    // This will only be used for production builds
+  webpack: (config) => {
     config.module.rules.push({
       test: /\.(woff|woff2|eot|ttf|otf)$/i,
       type: "asset/resource",
@@ -11,6 +13,7 @@ const nextConfig = {
         filename: "static/fonts/[name][ext]",
       },
     });
+    config.externals = [...config.externals, "@prisma/client"];
     return config;
   },
 };

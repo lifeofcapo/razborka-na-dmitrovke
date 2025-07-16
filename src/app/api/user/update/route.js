@@ -10,7 +10,6 @@ export async function PUT(request) {
       });
     }
 
-    // Format phone number if present
     if (updateData.phone) {
       updateData.phone = updateData.phone.replace(/^\+7/, "");
     }
@@ -20,12 +19,11 @@ export async function PUT(request) {
       data: updateData,
     });
 
-    // Return user without password
     const { password: _, ...safeUser } = updatedUser;
     return new Response(
       JSON.stringify({
         ...safeUser,
-        phone: `+7${safeUser.phone}`, // Return formatted phone
+        phone: `+7${safeUser.phone}`,
       }),
       { status: 200 }
     );

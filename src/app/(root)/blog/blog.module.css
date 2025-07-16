@@ -1,0 +1,142 @@
+.article {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.imageContainer {
+  margin-bottom: 2rem;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+}
+
+.image {
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.header {
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.date {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.content {
+  line-height: 1.6;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.content h2 {
+  font-size: 1.5rem;
+  margin: 1.5rem 0 1rem;
+}
+
+.content p {
+  margin-bottom: 1.5rem;
+}
+
+.content ul {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.footer {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid #eee;
+}
+
+.backLink {
+  color: #0066cc;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.backLink:hover {
+  text-decoration: underline;
+}
+
+/* Секция новостей */
+.postSection {
+  padding: 4rem 0;
+  background-color: var(--bg-color);
+}
+
+.postGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-color) transparent;
+}
+
+.postGrid::-webkit-scrollbar {
+  height: 6px;
+}
+
+.postGrid::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.postGrid::-webkit-scrollbar-thumb {
+  background-color: var(--border-color);
+  border-radius: 3px;
+}
+
+.postCard {
+  min-width: 300px;
+  background-color: var(--catalog-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px var(--shadow-color);
+  transition: box-shadow 0.3s ease;
+  flex-shrink: 0;
+}
+
+.postCard:hover {
+  box-shadow: 0 8px 25px var(--shadow-color);
+}
+
+.postImage {
+  height: 12rem;
+  background-color: var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+}
+
+.postContent {
+  padding: 1.5rem;
+}
+
+.postDate {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.postTitle {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin: 0.5rem 0 1rem;
+  color: var(--text-color);
+}
+
+.postExcerpt {
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
