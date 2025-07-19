@@ -98,7 +98,7 @@ export default async function POST(req, res) {
     return new Response(
       JSON.stringify({
         ...safeUser,
-        phone: `+${safeUser.phone}`, // Ensure client sees +7 format
+        phone: `+${safeUser.phone}`, // Убедиться, что клиент видит +7
       }),
       { status: 201 }
     );

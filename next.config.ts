@@ -1,5 +1,5 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+import type { NextConfig } from "next";
+const nextConfig: NextConfig = {
   turbopack: {},
   experimental: {
     serverActions: {}, // Empty object instead of boolean
