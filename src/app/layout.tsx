@@ -14,29 +14,12 @@ export const metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="ru" className={montserrat.variable}>
-      <head>
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/images/icons-light/apple-touch-icon.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/images/icons-light/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/images/icons-light/favicon-16x16.png"
-        />
-        <link rel="manifest" href="/images/icons-light/site.webmanifest" />
-      </head>
+      <head></head>
       <body>
         <ThemeProvider>
           <AuthProvider>

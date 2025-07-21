@@ -1,20 +1,35 @@
-import React, { useState } from 'react';
-import { useTheme } from '@/context/ThemeContext';
-import styles from './CallbackModal.module.css';
+"use client";
+import React, { useState, type ChangeEvent, type FormEvent } from "react";
+import { useTheme } from "@/context/ThemeContext";
+import styles from "./CallbackModal.module.css";
 
-const ThankYouModal = ({ isOpen, onClose, theme }) => {
+interface ThankYouModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  theme: "light" | "dark";
+}
+
+const ThankYouModal: React.FC<ThankYouModalProps> = ({
+  isOpen,
+  onClose,
+  theme,
+}) => {
   if (!isOpen) return null;
 
   return (
     <div className={styles.modalOverlay} onClick={onClose}>
-      <div 
-        className={`${styles.thankYouModal} ${theme === 'light' ? styles.thankYouModalLight : styles.thankYouModalDark}`} 
+      <div
+        className={`${styles.thankYouModal} ${
+          theme === "light"
+            ? styles.thankYouModalLight
+            : styles.thankYouModalDark
+        }`}
         onClick={(e) => e.stopPropagation()}
       >
         <button className={styles.modalClose} onClick={onClose}>
           ×
         </button>
-        
+
         <div className={styles.thankYouContent}>
           <div className={styles.successIcon}>✓</div>
           <h2>Спасибо за заявку!</h2>
@@ -28,80 +43,91 @@ const ThankYouModal = ({ isOpen, onClose, theme }) => {
   );
 };
 
-const CallbackModal = ({ isOpen, onClose }) => {
+interface CallbackModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+const CallbackModal: React.FC<CallbackModalProps> = ({ isOpen, onClose }) => {
   const { theme } = useTheme();
+
   const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    agreed: false
+    name: "",
+    phone: "",
+    agreed: false,
   });
+
   const [errors, setErrors] = useState({
-    name: '',
-    phone: ''
+    name: "",
+    phone: "",
   });
+
   const [showThankYou, setShowThankYou] = useState(false);
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;
-    
-    // Валидация имени
-    if (name === 'name') {
-      if (!/^[a-zA-Zа-яА-ЯёЁ\s-]+$/.test(value) && value !== '') {
-        setErrors(prev => ({...prev, name: 'Имя может содержать только буквы, пробелы и дефисы'}));
+
+    if (name === "name") {
+      if (!/^[a-zA-Zа-яА-ЯёЁ\s-]+$/.test(value) && value !== "") {
+        setErrors((prev) => ({
+          ...prev,
+          name: "Имя может содержать только буквы, пробелы и дефисы",
+        }));
         return;
       } else {
-        setErrors(prev => ({...prev, name: ''}));
+        setErrors((prev) => ({ ...prev, name: "" }));
       }
     }
-    
-    // Валидация телефона
-    if (name === 'phone') {
+
+    if (name === "phone") {
       if (!/^[0-9+()\s-]*$/.test(value)) {
-        setErrors(prev => ({...prev, phone: 'Номер телефона может содержать только цифры, +, (), пробелы и дефисы'}));
+        setErrors((prev) => ({
+          ...prev,
+          phone:
+            "Телефон может содержать только цифры, +, (), пробелы и дефисы",
+        }));
         return;
       } else {
-        setErrors(prev => ({...prev, phone: ''}));
+        setErrors((prev) => ({ ...prev, phone: "" }));
       }
     }
-    
-    setFormData(prev => ({
+
+    setFormData((prev) => ({
       ...prev,
-      [name]: type === 'checkbox' ? checked : value
+      [name]: type === "checkbox" ? checked : value,
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    
-    // Проверка заполнения полей
+
+    const newErrors = { name: "", phone: "" };
     let hasErrors = false;
-    const newErrors = { name: '', phone: '' };
-    
+
     if (!formData.name.trim()) {
-      newErrors.name = 'Пожалуйста, введите ваше имя';
+      newErrors.name = "Пожалуйста, введите ваше имя";
       hasErrors = true;
     }
-    
+
     if (!formData.phone.trim()) {
-      newErrors.phone = 'Пожалуйста, введите ваш телефон';
+      newErrors.phone = "Пожалуйста, введите ваш телефон";
       hasErrors = true;
     } else if (!/^[\d+][\d\s-()]{9,}$/.test(formData.phone)) {
-      newErrors.phone = 'Пожалуйста, введите корректный номер телефона';
+      newErrors.phone = "Пожалуйста, введите корректный номер телефона";
       hasErrors = true;
     }
-    
+
     if (!formData.agreed) {
-      alert('Пожалуйста, согласитесь с обработкой данных');
+      alert("Пожалуйста, согласитесь с обработкой данных");
       return;
     }
-    
+
     setErrors(newErrors);
-    
     if (hasErrors) return;
-    
-    console.log('Форма отправлена:', formData);
-    
-    setFormData({ name: '', phone: '', agreed: false });
+
+    console.log("Форма отправлена:", formData);
+
+    setFormData({ name: "", phone: "", agreed: false });
     setShowThankYou(true);
   };
 
@@ -116,17 +142,21 @@ const CallbackModal = ({ isOpen, onClose }) => {
     <>
       {isOpen && !showThankYou && (
         <div className={styles.modalOverlay} onClick={onClose}>
-          <div 
-            className={`${styles.modalContent} ${theme === 'light' ? styles.modalContentLight : styles.modalContentDark}`} 
+          <div
+            className={`${styles.modalContent} ${
+              theme === "light"
+                ? styles.modalContentLight
+                : styles.modalContentDark
+            }`}
             onClick={(e) => e.stopPropagation()}
           >
             <button className={styles.modalClose} onClick={onClose}>
               ×
             </button>
-            
+
             <h2 className={styles.modalTitle}>Заказать обратный звонок</h2>
-            
-            <div className={styles.callbackForm}>
+
+            <form className={styles.callbackForm} onSubmit={handleSubmit}>
               <div className={styles.formGroup}>
                 <label htmlFor="name">Имя</label>
                 <input
@@ -140,9 +170,11 @@ const CallbackModal = ({ isOpen, onClose }) => {
                   required
                 />
                 <span className={styles.requiredStar}>*</span>
-                {errors.name && <div className={styles.errorText}>{errors.name}</div>}
+                {errors.name && (
+                  <div className={styles.errorText}>{errors.name}</div>
+                )}
               </div>
-              
+
               <div className={styles.formGroup}>
                 <label htmlFor="phone">Телефон</label>
                 <input
@@ -156,9 +188,11 @@ const CallbackModal = ({ isOpen, onClose }) => {
                   required
                 />
                 <span className={styles.requiredStar}>*</span>
-                {errors.phone && <div className={styles.errorText}>{errors.phone}</div>}
+                {errors.phone && (
+                  <div className={styles.errorText}>{errors.phone}</div>
+                )}
               </div>
-              
+
               <div className={styles.checkboxGroup}>
                 <label className={styles.checkboxLabel}>
                   <input
@@ -169,33 +203,31 @@ const CallbackModal = ({ isOpen, onClose }) => {
                     required
                   />
                   <span className={styles.checkboxText}>
-                    Я подтверждаю свое ознакомление с{' '}
+                    Я подтверждаю свое ознакомление с{" "}
                     <a href="#" className={styles.policyLink}>
                       Политикой обработки персональных данных
-                    </a>{' '}
-                    и выражаю согласие на обработку моих персональных данных в соответствии с{' '}
+                    </a>{" "}
+                    и выражаю согласие на обработку моих персональных данных в
+                    соответствии с{" "}
                     <a href="#" className={styles.policyLink}>
                       Условиями обработки персональных данных
-                    </a>.
+                    </a>
+                    .
                   </span>
                 </label>
               </div>
-              
-              <button 
-                onClick={handleSubmit}
-                className={styles.submitBtn}
-                disabled={!formData.agreed}
-              >
+
+              <button className={styles.submitBtn} disabled={!formData.agreed}>
                 Отправить
               </button>
-            </div>
+            </form>
           </div>
         </div>
       )}
-      
-      <ThankYouModal 
-        isOpen={showThankYou} 
-        onClose={handleCloseThankYou} 
+
+      <ThankYouModal
+        isOpen={showThankYou}
+        onClose={handleCloseThankYou}
         theme={theme}
       />
     </>
