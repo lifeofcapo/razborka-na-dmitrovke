@@ -1,10 +1,5 @@
 import { Socket } from "socket.io-client";
 
-export interface User {
-  name: string;
-  id: string;
-}
-
 export interface SystemMessage {
   content: string;
   type: "server";
@@ -41,4 +36,19 @@ export interface SignUpProps {
   socket: Socket;
   input: string;
   setInput: (value: string) => void;
+}
+
+export interface User {
+  id: number;
+  name: string;
+  email: string;
+  phone: string;
+  [key: string]: any;
+}
+
+export interface Order {
+  id: string;
+  date: string;
+  status: string;
+  [key: string]: any;
 }
