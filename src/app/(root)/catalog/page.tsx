@@ -15,13 +15,13 @@ import {
   transmissions,
   fuelTypes,
   engineVolumes,
-} from "@/app/(root)/data/Filters";
+} from "@/data/SearchMainFilters";
 import {
   carBrands,
   carGenerations,
   carModels,
   carParts,
-} from "@/app/(root)/data/CarParts";
+} from "@/data/CarParts";
 
 export default function Catalog() {
   const [products, setProducts] = useState([]);

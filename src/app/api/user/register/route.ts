@@ -5,24 +5,37 @@ import {
   validatePhone,
   validateEmail,
 } from "@/util/validateReg";
+import { NextResponse } from "next/server";
 
-const registrationAttempts = new Map();
+interface RegisterRequest {
+  name: string;
+  email: string;
+  password: string;
+  phone: string;
+}
 
-export default async function POST(req, res) {
-  if (req.method !== "POST") return res.status(405).end();
+const registrationAttempts = new Map<
+  string,
+  { count: number; firstAttempt: number }
+>();
 
-  const ip = req.headers["x-real-ip"] || req.connection.remoteAddress;
+export async function POST(req: Request) {
+  if (req.method !== "POST") {
+    return NextResponse.json({ error: "Method not allowed" }, { status: 405 });
+  }
+
+  const ip =
+    req.headers.get("x-real-ip") ||
+    req.headers.get("x-forwarded-for") ||
+    "unknown";
   const now = Date.now();
 
   if (registrationAttempts.has(ip)) {
-    const { count, firstAttempt } = registrationAttempts.get(ip);
+    const { count, firstAttempt } = registrationAttempts.get(ip)!;
     if (count >= 10 && now - firstAttempt < 60 * 60 * 1000) {
-      return new Response(
-        JSON.stringify({ error: "Too many registration attempts" }),
-        {
-          status: 429,
-          headers: { "Content-Type": "application/json" },
-        }
+      return NextResponse.json(
+        { error: "Too many registration attempts" },
+        { status: 429 }
       );
     }
     registrationAttempts.set(ip, {
@@ -34,38 +47,37 @@ export default async function POST(req, res) {
   }
 
   try {
-    const { name, email, password, phone } = await request.json();
+    const { name, email, password, phone }: RegisterRequest = await req.json();
     if (!name || !email || !password || !phone) {
-      return new Response(
-        JSON.stringify({ error: "Missing required fields" }),
-        {
-          status: 400,
-          headers: { "Content-Type": "application/json" },
-        }
+      return NextResponse.json(
+        { error: "Missing required fields" },
+        { status: 400 }
       );
     }
 
     const emailValidation = validateEmail(email);
     if (!emailValidation.isValid) {
-      return new Response(JSON.stringify({ error: emailValidation.message }), {
-        status: 400,
-      });
+      return NextResponse.json(
+        { error: emailValidation.message },
+        { status: 400 }
+      );
     }
     const phoneValidation = validatePhone(phone);
     if (!phoneValidation.isValid) {
-      return new Response(JSON.stringify({ error: phoneValidation.message }), {
-        status: 400,
-      });
+      return NextResponse.json(
+        { error: phoneValidation.message },
+        { status: 400 }
+      );
     }
 
     const passwordValidation = validatePassword(password);
     if (!passwordValidation.isValid) {
-      return new Response(
-        JSON.stringify({
+      return NextResponse.json(
+        {
           error: "Password does not meet requirements",
           requirements: passwordValidation.requirements,
-        }),
-        { status: 400, headers: { "Content-Type": "application/json" } }
+        },
+        { status: 400 }
       );
     }
 
@@ -74,12 +86,9 @@ export default async function POST(req, res) {
     });
 
     if (existingUser) {
-      return new Response(
-        JSON.stringify({ error: "Email already registered" }),
-        {
-          status: 409,
-          headers: { "Content-Type": "application/json" },
-        }
+      return NextResponse.json(
+        { error: "Email already registered" },
+        { status: 409 }
       );
     }
 
@@ -95,18 +104,18 @@ export default async function POST(req, res) {
     });
 
     const { password: _, ...safeUser } = newUser;
-    return new Response(
-      JSON.stringify({
+    return NextResponse.json(
+      {
         ...safeUser,
-        phone: `+${safeUser.phone}`, // Убедиться, что клиент видит +7
-      }),
+        phone: `+${safeUser.phone}`, //Убедиться, что клиент видит +7
+      },
       { status: 201 }
     );
   } catch (error) {
     console.error("Registration error:", error);
-    return new Response(JSON.stringify({ error: "Internal server error" }), {
-      status: 500,
-      headers: { "Content-Type": "application/json" },
-    });
+    return NextResponse.json(
+      { error: "Internal server error" },
+      { status: 500 }
+    );
   }
 }

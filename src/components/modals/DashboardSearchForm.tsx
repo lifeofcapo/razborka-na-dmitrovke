@@ -11,8 +11,8 @@ import {
 import { BsVinylFill } from "react-icons/bs";
 import Link from "next/link";
 import styles from "./Dashsearchform.module.css";
-import { bodyTypes, fuelTypes, engineVolumes } from "@/app/(root)/data/Filters";
-import { carParts } from "@/app/(root)/data/CarParts";
+import { bodyTypes, fuelTypes, engineVolumes } from "@/data/SearchMainFilters";
+import { carParts } from "@/data/CarParts";
 import { Brand, Model, Generation } from "@/types/car";
 
 export default function SearchForm() {

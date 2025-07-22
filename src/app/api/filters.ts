@@ -6,3 +6,6 @@ export async function GET() {
   const brands = await prisma.carBrand.findMany({ include: { models: true } });
   return NextResponse.json({ categories, brands });
 }
+
+// Для получения категорий и брендов из призмы
+// Мб убрать в будущем

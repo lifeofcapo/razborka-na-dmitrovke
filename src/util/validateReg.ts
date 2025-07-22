@@ -1,4 +1,23 @@
-export const validatePassword = (password) => {
+interface PasswordValidationResult {
+  isValid: boolean;
+  requirements: {
+    minLength: number;
+    hasUpperCase: boolean;
+    hasLowerCase: boolean;
+    hasNumber: boolean;
+    hasSpecialChar: boolean;
+    message: string;
+  };
+}
+
+interface BasicValidationResult {
+  isValid: boolean;
+  message?: string;
+}
+
+export const validatePassword = (
+  password: string
+): PasswordValidationResult => {
   const minLength = 10;
   const hasUpperCase = /[A-Z]/.test(password);
   const hasLowerCase = /[a-z]/.test(password);
@@ -22,12 +41,12 @@ export const validatePassword = (password) => {
       hasSpecialChar,
       message: isValid
         ? ""
-        : "Password must contain at least 8 characters, including uppercase, lowercase, number, and special character",
+        : "Пароль должен состоять минимум из 10 символов, включая заглавную и строчные буквы, цифры, и специальный символ",
     },
   };
 };
 
-export function validatePhone(phone) {
+export function validatePhone(phone: string): BasicValidationResult {
   if (!phone.startsWith("+7")) {
     return { isValid: false, message: "Phone must start with +7" };
   }
@@ -40,10 +59,10 @@ export function validatePhone(phone) {
   return { isValid: true };
 }
 
-export function validateEmail(email) {
+export function validateEmail(email: string): BasicValidationResult {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return {
     isValid: emailRegex.test(email),
-    message: "Please enter a valid email address",
+    message: "Пожалуйста введите настоящий email адрес ",
   };
 }
